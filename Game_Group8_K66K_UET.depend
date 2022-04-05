@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1649172661 source:d:\game-group-8-k66k-uet\main.cpp
+	<graphics.h>
+	<stdio.h>
+	<conio.h>
+
