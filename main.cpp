@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#pragma region InitWConsoleWindow
+
 void SetColor(int backgound_color, int text_color)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -46,6 +48,20 @@ HWND WINAPI GetConsoleWindowNT(void)
     return GetConsoleWindow();
 }
 
+void InitWindowConsole()
+{
+    //SetColor(7,12);
+    //Change location and size of console window
+	HWND hWnd=GetConsoleWindowNT();
+    MoveWindow(hWnd,0,396,1290,350,TRUE);
+    //Hide scroll bar
+    ShowScrollbar(0);
+    //forbid to change size of console window
+    DisableResizeWindow();
+}
+
+#pragma endregion InitWConsoleWindow
+
 void InputKey()
 {
     int InputKey;
@@ -71,29 +87,28 @@ void InputKey()
     }
 }
 
+void InitEverythings()
+{
+    SetConsoleOutputCP(CP_UTF8);
+    InitWindowConsole();
+    initwindow(1290,400,"Game");
+}
+
 int main()
 
 {
-    SetConsoleOutputCP(CP_UTF8);
-    initwindow(1200,400,"Game");
-    SetColor(7,12);
-    //thay đổi kích thước + vị trí
-	HWND hWnd=GetConsoleWindowNT();
-    MoveWindow(hWnd,0,396,1210,400,TRUE);
-    //ẩn thanh cuộn
-    ShowScrollbar(0);
-    //cấm thay đổi kích thước;
-    DisableResizeWindow();
+    InitEverythings();
 
-    readimagefile("Resources/sex.jpg",3,0,1200,400);
+    readimagefile("Resources/sex.jpg",50,0,1230,400);
     getch();
     int i=0;
-    char s[]="Có cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày";
+    char s[]="\nCó cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày";
     while(i<strlen(s))
     {
         printf("%c",s[i++]);
-        Sleep(20);
+        Sleep(30);
     }
+    //system("pause");
     system("cls");
     //InputKey();
 
