@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1649308173 source:d:\lap trinh c\test1ty\main.cpp
+	<graphics.h>
+	<stdio.h>
+	<conio.h>
+	<windows.h>
+	<stdlib.h>
+
