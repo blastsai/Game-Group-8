@@ -39,19 +39,37 @@ HWND WINAPI GetConsoleWindowNT(void)
 
 void InitWindowConsole()
 {
-    SetColor(7,12);
+    //SetColor(7,12);
     //Change location and size of console window
 	HWND hWnd=GetConsoleWindowNT();
-    MoveWindow(hWnd,0,396,1290,350,TRUE);
+    MoveWindow(hWnd,0,405,1290,350,TRUE);
     //Hide scroll bar
     ShowScrollbar(0);
     //forbid changing size of console window
     DisableResizeWindow();
 }
 
-void InitFullScreen(char GameName[])
+void InitEverythings(char GameName[])
 {
     SetConsoleOutputCP(CP_UTF8);
     InitWindowConsole();
     initwindow(1290,400,GameName);
+}
+
+void StartConversation(char CharactorImageLink[],char ImageLink[],char CharactorName[],char Conversation[])
+{
+    readimagefile(ImageLink,50,0,1230,400);
+    readimagefile(CharactorImageLink,100,200,300,400);
+
+    int i=0;
+    printf("\t%s\n\t",CharactorName);
+    while(i<strlen(Conversation))
+    {
+        printf("%c",Conversation[i++]);
+        Sleep(30);
+    }
+    printf("\n\n\tNhấn phím bất kì để tiếp tục...");
+    getch();
+    Beep(500,200);
+    system("cls");
 }

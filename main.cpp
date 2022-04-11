@@ -1,7 +1,7 @@
 #include <graphics.h>
 #include <stdio.h>
 #include <conio.h>
-#include <string>
+#include <string.h>
 #include <windows.h>
 #include "VNG.h"
 
@@ -14,13 +14,8 @@ void InputKey()
     while(InputKey!=27)
     {
         InputKey=getch();
-        Beep(1200,200);
         switch (InputKey)
         {
-        case 8: /* backspace */
-            break;
-        case 13: /* return */
-            break;
         case 27: /* escape = abort */
             break;
         default:
@@ -32,26 +27,11 @@ void InputKey()
     }
 }
 
-
-
 int main()
-
 {
-    InitFullScreen("FIND THE TRUTH");
+    InitEverythings("FIND THE TRUTH");
 
-    readimagefile("Resources/sex.jpg",50,0,1230,400);
-    getch();
-    int i=0;
-    char s[]="\nCó cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày Có cài lồn địt con bà mày";
-    while(i<strlen(s))
-    {
-        printf("%c",s[i++]);
-        Sleep(30);
-    }
-    //system("pause");
-    system("cls");
-    //InputKey();
-
+    StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
 
     getch();
     closegraph();
