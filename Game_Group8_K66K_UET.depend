@@ -1,9 +1,11 @@
 # depslib dependency file v1.0
-1649511891 source:d:\game-group-8-k66k-uet\main.cpp
+1649645496 source:d:\game-group-8-k66k-uet\main.cpp
 	<graphics.h>
 	<stdio.h>
 	<conio.h>
 	<string>
-	<iostream>
 	<windows.h>
+	"VNG.h"
+
+1649645535 d:\game-group-8-k66k-uet\vng.h
 
