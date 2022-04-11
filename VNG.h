@@ -5,13 +5,13 @@ void SetColor(int backgound_color, int text_color)
     int color_code = backgound_color * 16 + text_color;
     SetConsoleTextAttribute(hStdout, color_code);
 }
-//ẩn hiện thanh cuộn
+//Show Hide scroll bar
 void ShowScrollbar(BOOL Show)
 {
     HWND hWnd = GetConsoleWindow();
     ShowScrollBar(hWnd, SB_BOTH, Show);
 }
-//cấm thay đổi kích thước
+//Disable Resize Window
 void DisableResizeWindow()
 {
     HWND hWnd = GetConsoleWindow();
@@ -45,7 +45,7 @@ void InitWindowConsole()
     MoveWindow(hWnd,0,396,1290,350,TRUE);
     //Hide scroll bar
     ShowScrollbar(0);
-    //forbid to change size of console window
+    //forbid changing size of console window
     DisableResizeWindow();
 }
 
