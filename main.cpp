@@ -3,9 +3,10 @@
 #include <conio.h>
 #include <string.h>
 #include <windows.h>
+#include<mmsystem.h>
 #include "VNG.h"
 
-using namespace std;
+//using namespace std;
 
 void InputKey()
 {
@@ -21,7 +22,7 @@ void InputKey()
         default:
             //cleardevice();
             setbkcolor(8);
-            //printf("%d ",InputKey);
+            printf("%d ",InputKey);
             break;
         }
     }
@@ -30,9 +31,12 @@ void InputKey()
 int main()
 {
     InitEverythings("FIND THE TRUTH");
-
+    //StartConversation("Resources/Character/cjpg.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
+    //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
+    //StartConversation("","Resources/Menu.jpg","","What !!!");
+    //InputKey();
+    StartQuestion("","Resources/Menu.jpg","","What !!!",2);
     StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
-
     getch();
     closegraph();
 
