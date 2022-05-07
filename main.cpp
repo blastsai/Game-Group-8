@@ -4,6 +4,8 @@
 #include <string.h>
 #include <windows.h>
 #include<mmsystem.h>
+#include <fstream>
+#include <iostream>
 #include "VNG.h"
 
 //using namespace std;
@@ -35,6 +37,9 @@ int main()
     //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
     //StartConversation("","Resources/Menu.jpg","","What !!!");
     //InputKey();
+    SaveData("GameData.txt",2000);
+    //printf("%d",LoadData("GameData.txt"));
+    Menu("Resources/Menu.jpg");
     StartQuestion("","Resources/Menu.jpg","","What !!!",2);
     StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
     getch();

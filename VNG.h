@@ -62,6 +62,7 @@ void StartConversation(char charactorImageLink[],char imageLink[],char charactor
     readimagefile(imageLink,50,0,1230,400);
     readimagefile(charactorImageLink,100,200,300,400);
 
+    system("cls");
     int i=0;
     printf("\t%s\n\t",charactorName);
     while(i<strlen(conversation))
@@ -79,7 +80,7 @@ void StartQuestion(char charactorImageLink[],char imageLink[],char charactorName
 {
     readimagefile(imageLink,50,0,1230,400);
     readimagefile(charactorImageLink,100,200,300,400);
-
+    system("cls");
     while(1)
     {
         int i=0;
@@ -93,7 +94,7 @@ void StartQuestion(char charactorImageLink[],char imageLink[],char charactorName
         printf("\n\n\tNhập câu trả lời của bạn: ");
         int inputKey=getch();
         Beep(500,200);
-        printf("%d",inputKey-48);
+        printf("%c",inputKey);
         if(inputKey==rightAnswer+48)
             break;
 
@@ -127,7 +128,7 @@ int StartSellection(char charactorImageLink[],char imageLink[],char charactorNam
         }
         printf("\n\n\t---Nhập lựa chọn của bạn: ");
         int answer=getch();
-        printf("%d",answer-48);
+        printf("%c",answer);
         Beep(500,200);
 
         for(int j=0;j<rightSellectionLength;j++)
@@ -140,4 +141,61 @@ int StartSellection(char charactorImageLink[],char imageLink[],char charactorNam
     }
 
     return -1;
+}
+
+int Menu(char menuImageLink[])
+{
+    readimagefile(menuImageLink,50,0,1230,400);
+    while(1)
+    {
+
+        printf("Nhập lựa chọn của bạn: ");
+        int input=getch();
+        printf("%c",input);
+        switch(input)
+        {
+        case 49:
+            return 1;
+        case 50:
+            return 2;
+        case 51:
+            return 3;
+        default:
+            system("cls");
+            printf("\tLựa chọn của bạn không hợp lệ, hãy nhập lại.\n");
+            break;
+        }
+    }
+
+    return -1;
+
+}
+
+int LoadData(char fileName[])
+{
+    std::fstream data;
+    data.open(fileName,std::ios_base::in);
+    if(data.fail())
+    {
+        data.open(fileName,std::ios_base::out);
+        data<<0;
+        return 0;
+    }
+
+    int x;
+    data>>x;
+    data.close();
+    return x;
+}
+
+void SaveData(char fileName[],int intData)
+{
+    std::ofstream data;
+    data.open(fileName,std::ios_base::out);
+    data<<intData;
+    data.close();
+}
+void ClearData(char fileName[])
+{
+    SaveData(fileName,0);
 }
