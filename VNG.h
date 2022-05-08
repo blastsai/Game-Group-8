@@ -59,6 +59,7 @@ void InitEverythings(char GameName[])
 
 void StartConversation(char charactorImageLink[],char imageLink[],char charactorName[],char conversation[])
 {
+    cleardevice();
     readimagefile(imageLink,50,0,1230,400);
     readimagefile(charactorImageLink,100,200,300,400);
 
@@ -78,6 +79,7 @@ void StartConversation(char charactorImageLink[],char imageLink[],char charactor
 
 void StartQuestion(char charactorImageLink[],char imageLink[],char charactorName[],char question[],int rightAnswer)
 {
+    cleardevice();
     readimagefile(imageLink,50,0,1230,400);
     readimagefile(charactorImageLink,100,200,300,400);
     system("cls");
@@ -111,8 +113,9 @@ void StartQuestion(char charactorImageLink[],char imageLink[],char charactorName
     system("cls");
 }
 
-int StartSellection(char charactorImageLink[],char imageLink[],char charactorName[],char conversation[],int rightSellection[],int rightSellectionLength)
+int StartSelection(char charactorImageLink[],char imageLink[],char charactorName[],char conversation[],int rightSellection[],int rightSellectionLength)
 {
+    cleardevice();
     readimagefile(imageLink,50,0,1230,400);
     readimagefile(charactorImageLink,100,200,300,400);
 
@@ -145,6 +148,7 @@ int StartSellection(char charactorImageLink[],char imageLink[],char charactorNam
 
 int Menu(char menuImageLink[])
 {
+    cleardevice();
     readimagefile(menuImageLink,50,0,1230,400);
     while(1)
     {
@@ -195,7 +199,114 @@ void SaveData(char fileName[],int intData)
     data<<intData;
     data.close();
 }
+
 void ClearData(char fileName[])
 {
     SaveData(fileName,0);
+}
+
+void SaveGame(char fileName[],int data)
+{
+    FILE *f;
+    f=fopen(fileName,"w");
+    fprintf(f,"%d",data);
+    fclose(f);
+}
+
+int LoadGame(char fileName[])
+{
+    while(1)
+    {
+        int d;
+        FILE *f;
+        f=fopen(fileName,"r");
+        if(f==NULL)
+        {
+            SaveGame(0,fileName);
+            continue;
+        }
+        fscanf(f,"%d",&d);
+        fclose(f);
+        return d;
+    }
+    return -1;
+}
+
+void NewGame(char fileName[])
+{
+	SaveGame(0,fileName);
+}
+
+void Flicker(char imageLink[],int numberOfFlashes,int delayTime,int color)
+{
+    int c=0;
+    while(c<numberOfFlashes)
+    {
+        readimagefile(imageLink,50,0,1230,400);
+        Sleep(delayTime);
+        cleardevice();
+        setbkcolor(color);
+        c++;
+    }
+    setbkcolor(BLACK);
+}
+
+void Shake(char imageLink[],int numberOfShake)
+{
+    int c=0;
+    while(c<numberOfShake)
+    {
+        readimagefile(imageLink,50,0,1230,400);
+        Sleep(20);
+        //cleardevice();
+        readimagefile(imageLink,40,10,1220,410);
+        Sleep(20);
+        //cleardevice();
+        readimagefile(imageLink,50,0,1230,400);
+        Sleep(20);
+        //cleardevice();
+        readimagefile(imageLink,60,10,1240,410);
+        Sleep(20);
+        //cleardevice();
+        c++;
+    }
+    cleardevice();
+}
+
+void HardFlicker(char imageLink[],int numberOfFlashes,int color)
+{
+    int c=0;
+    setbkcolor(color);
+    while(c<numberOfFlashes)
+    {
+        readimagefile(imageLink,50,0,1230,400);
+        Sleep(20);
+        cleardevice();
+        readimagefile(imageLink,40,10,1220,410);
+        Sleep(20);
+        cleardevice();
+        readimagefile(imageLink,50,0,1230,400);
+        Sleep(20);
+        cleardevice();
+        readimagefile(imageLink,60,10,1240,410);
+        Sleep(20);
+        cleardevice();
+        c++;
+    }
+    setbkcolor(BLACK);
+    cleardevice();
+}
+
+void HardShake(char imageLink[],int shakeTimes)
+{
+    int c=0;
+    while(c<shakeTimes)
+    {
+        readimagefile(imageLink,50,0,1230,400);
+        Sleep(10);
+        readimagefile(imageLink,50,20,1230,420);
+        Sleep(10);
+        readimagefile(imageLink,50,0,1230,400);
+        c++;
+    }
 }
