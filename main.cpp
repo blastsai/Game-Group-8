@@ -35,17 +35,27 @@ void Introduce()
     SaveGame("GameData.txt",0);
     //StartConversation("Resources/Character/cjpg.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
 }
+void Day1()
+{
+    //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
+    //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
+    //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
+    //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
+    //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
+}
+
+
 
 int main()
 {
     InitEverythings("FIND THE TRUTH");
-
     int menuSelect;
     int gameData=0;
+    PlaySound("girl ahh sound.wav",NULL,SND_SYNC);
 
     do
     {
-        menuSelect=Menu();
+        menuSelect=Menu("Resources/Menu.jpg");
         switch(menuSelect)
         {
         case 1:
@@ -61,7 +71,8 @@ int main()
         default:
             break;
         }
-    }while(menuSelect==-1)
+    }
+    while(menuSelect==-1);
 
     switch(gameData)
     {
@@ -78,7 +89,7 @@ int main()
         break;
     }
     //StartConversation("Resources/Character/cjpg.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
-    //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
+    StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
     //StartConversation("","Resources/Menu.jpg","","What !!!");
     //InputKey();
     //SaveData("GameData.txt",2000);
@@ -91,6 +102,8 @@ int main()
     //StartConversation("Resources/sex.jpg","Resources/cha.jpg","Mia","Có con cặc ý Có coặc ý Có con Có con cặc ý Có con cặc ý");
     getch();
     closegraph();
+
+    Vector2 mousePos;
 
     return 0;
 }

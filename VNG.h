@@ -222,7 +222,7 @@ int LoadGame(char fileName[])
         f=fopen(fileName,"r");
         if(f==NULL)
         {
-            SaveGame(0,fileName);
+            SaveGame(fileName,0);
             continue;
         }
         fscanf(f,"%d",&d);
@@ -234,7 +234,7 @@ int LoadGame(char fileName[])
 
 void NewGame(char fileName[])
 {
-	SaveGame(0,fileName);
+	SaveGame(fileName,0);
 }
 
 void Flicker(char imageLink[],int numberOfFlashes,int delayTime,int color)
@@ -309,4 +309,26 @@ void HardShake(char imageLink[],int shakeTimes)
         readimagefile(imageLink,50,0,1230,400);
         c++;
     }
+}
+
+typedef struct Vector2
+{
+    float x;
+    float y;
+}Vector2;
+
+Vector2 GetMousePostion()
+{
+    Vector2 mousePos;
+    POINT pnt;
+    GetCursorPos(&pnt);
+    ScreenToClient(GetForegroundWindow(), &pnt);
+    mousePos.x=pnt.x;
+    mousePos.y=pnt.y;
+    return mousePos;
+}
+
+bool IsMouseLeftClick()
+{
+    return GetAsyncKeyState(VK_LBUTTON);
 }
