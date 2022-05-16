@@ -69,7 +69,15 @@ void StartConversation(char charactorImageLink[],char imageLink[],char charactor
     while(i<strlen(conversation))
     {
         printf("%c",conversation[i++]);
-        Sleep(30);
+        Sleep(10);
+        if(kbhit())
+        {
+            getch();
+            system("cls");
+            printf("\t%s\n\t",charactorName);
+            printf("%s",conversation);
+            break;
+        }
     }
     printf("\n\n\t---Nhấn phím bất kì để tiếp tục---");
     getch();
@@ -90,7 +98,15 @@ void StartQuestion(char charactorImageLink[],char imageLink[],char charactorName
         while(i<strlen(question))
         {
             printf("%c",question[i++]);
-            Sleep(30);
+            if(kbhit())
+            {
+                getch();
+                system("cls");
+                printf("\t%s\n\t",charactorName);
+                printf("%s",question);
+                break;
+            }
+            Sleep(10);
         }
 
         printf("\n\n\tNhập câu trả lời của bạn: ");
@@ -134,9 +150,9 @@ int StartSelection(char charactorImageLink[],char imageLink[],char charactorName
         printf("%c",answer);
         Beep(500,200);
 
-        for(int j=0;j<rightSellectionLength;j++)
+        for(int j=0; j<rightSellectionLength; j++)
         {
-            if(answer==rightSellection[j])
+            if(answer-48==rightSellection[j])
                 return answer;
         }
         printf("\n\n\tLựa chọn của bạn không hợp lệ");
@@ -234,7 +250,7 @@ int LoadGame(char fileName[])
 
 void NewGame(char fileName[])
 {
-	SaveGame(fileName,0);
+    SaveGame(fileName,0);
 }
 
 void Flicker(char imageLink[],int numberOfFlashes,int delayTime,int color)
@@ -315,7 +331,7 @@ typedef struct Vector2
 {
     float x;
     float y;
-}Vector2;
+} Vector2;
 
 Vector2 GetMousePostion()
 {
@@ -331,4 +347,42 @@ Vector2 GetMousePostion()
 bool IsMouseLeftClick()
 {
     return GetAsyncKeyState(VK_LBUTTON);
+}
+
+void StartAnswer(char charactorImageLink[],char imageLink[],char charactorName[],char conversation[])
+{
+    cleardevice();
+    readimagefile(imageLink,50,0,1230,400);
+    readimagefile(charactorImageLink,100,200,300,400);
+
+    system("cls");
+    int i=0;
+    printf("\t%s\n\t",charactorName);
+    while(i<strlen(conversation))
+    {
+        printf("%c",conversation[i++]);
+        Sleep(10);
+    }
+    system("cls");
+}
+int input()
+{
+    printf("Nhập đáp án và enter: ");
+    int n=0;
+    int num;
+    char tempString[1];
+    int temp=0;
+    char t=0;
+    while((int)t!=13)
+    {
+        t=getch();
+        printf("%c",t);
+        if(t!=13) //nhập enter
+            tempString[temp++]=t;
+        if(t==32) //nhập space
+            break;
+    }
+    sscanf(tempString,"%d",&num);
+    system("cls");
+    return num;
 }
