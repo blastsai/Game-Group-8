@@ -386,3 +386,33 @@ int input()
     system("cls");
     return num;
 }
+
+void SaveDataArray(char fileName[],int data[],int len)
+{
+    FILE *f;
+    f=fopen(fileName,"w");
+    for(int i=0;i<len;i++)
+        fprintf(f,"%d ",data[i]);
+    fclose(f);
+}
+
+int*LoadDataArray(char fileName[],int len)
+{
+    while(1)
+    {
+        int*arr=(int*)malloc(sizeof(int)*len);
+        FILE *f;
+        f=fopen(fileName,"r");
+        if(f==NULL)
+        {
+            f=fopen(fileName,"w");
+            continue;
+        }
+        for(int i=0;i<len;i++)
+            fscanf(f,"%d",&arr[i]);
+        fclose(f);
+        return arr;
+    }
+    
+    return NULL;
+}
