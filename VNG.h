@@ -153,7 +153,7 @@ int StartSelection(char charactorImageLink[],char imageLink[],char charactorName
         for(int j=0; j<rightSellectionLength; j++)
         {
             if(answer-48==rightSellection[j])
-                return answer;
+                return answer-48;
         }
         printf("\n\n\tLựa chọn của bạn không hợp lệ");
         Sleep(1000);
@@ -413,6 +413,6 @@ int*LoadDataArray(char fileName[],int len)
         fclose(f);
         return arr;
     }
-    
+
     return NULL;
 }
