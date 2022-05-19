@@ -11,13 +11,14 @@
 
 void Day2();
 void Day3();
+void phase4();
 void PartOne();
 void End1_1();
 void End1_2();
 void End2_1();
 void End2_2();
 void End();
-
+int ChessQuiz();
 
 int*ls;
 int Minigame2();
@@ -27,6 +28,7 @@ int main()
     InitEverythings("FIND THE TRUTH");
     int menuSelect=-1;
     int gameData=0;
+    ls=(int*)calloc(sizeof(int),6);
 
     //Minigame2();
     do
@@ -47,10 +49,9 @@ int main()
         default:
             break;
         }
-    }
-    while(menuSelect==-1);
+    }while(menuSelect==-1);
 
-    gameData=2;
+    //gameData=0;
 
     while(1)
     {
@@ -75,6 +76,7 @@ int main()
         case 3:
             gameData++;
             SaveData("GameData.txt",gameData);
+            phase4();
             break;
         case 4:
             gameData++;
@@ -215,7 +217,7 @@ void Day2()
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-16.jpg","","Mọi người vừa lên giường thì nghe thấy tiếng leng keng xung quanh ở ngoài lúc đi xa lúc đến gân. Tự nhiên “Choang” một cái – cái bẫy đã bắt được con gì đó.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-17.jpg","","Họ ra ngoài kiểm tra và biết được đấy là con chó hoang được đeo chiếc chuông ở chân, cổ và tay. Ling và Hiền cố giỗ con chó để nó bình tĩnh nhưng không được.");
     ls[2]=Minigame2();
-    SaveDataArray("ls.txt",ls,5);
+    SaveDataArray("ls.txt",ls,6);
     if(ls[2]==1)
     {
         StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-18.jpg","","Hưng bất ngờ đè con chó xuống rồi lấy những chiếng chuông đi, sau đó đuổi con chó. Trong chuông mọi người phát hiện được 3 mảnh giấy khi ghép lại ra các gợi ý còn lại x6, x8, x10 lần lượt là “59”, “57931084”,”263930”.");
@@ -239,7 +241,6 @@ void Day3()
     StartConversation("", "Resources/Para3_image5.jpg", "", "Sau khi nghe toàn bộ mọi chuyện, Nam nói rằng mình phải tìm được manh mối cuối cùng là x7 trước khi rời khỏi đây, vì hắn sẽ cố gắng thủ tiêu manh mối cuối cùng đó. Ling đồng ý và nói rằng rất có thể manh mối cuối cùng liên quan tới cái đèn nhấp nháy.");
     StartConversation("", "Resources/Para3_image6.jpg", "", "Vừa dứt lời thì đèn phòng nhấp nháy thật và nhấp nháy rất lạ, có vẻ có quy luật riêng.");
     StartQuestion("","Nhớ thêm ảnh","","Đèn nhấp nháy như là biểu thị: -..- --... ; Mã trên có 1 nghĩa gì\n\t1. x7 2. x10 3. x11 4.x12 ",1);
-    //StartConversation("", "Resources/Para3_image7.jpg", "", "Chị Ngân là kiểm lâm có nhiều kinh nghiệm cứu hộ, thấy rằng độ nhanh chậm của bật tắt đèn đang lặp lại cái cái gì đó, sau một hồi phân tích, chị thấy đó rằng có đang biểu thị ký tự “7x7x7x7”, vậy có thể đây chí là đáp án của x7, nhưng mọi người không biết x7 là gì.");
     StartConversation("", "Resources/Para3_image8.jpg", "", "Là sinh viên khá trong lập trình Adruno, Ling nó rằng để có thể lên được các tín hiện như vậy, thì phải lập trình cho mạnh tự động rất phức tạp. Vì thế Ling cùng mọi người ra khu điều khiển điện.");
     StartConversation("", "Resources/Para3_image9.jpg", "", "Và thấy rằng bảng điện bị nối thêm 1 mạch Adruno, thậm chí nó có cả màn hình hiện lên các lệnh lập trình đấy.");
     StartConversation("", "Resources/Para3_image10.jpg", "", "Hưng và Ling ghi bắt đầu nghiên cứu. Kéo đến cuối họ thấy comment của hàm “ for(int i=0;i<INT.MAX;i++) printf(“45”); “ được lặp lại nhiều lần, có vẻ như người viết muốn mọi người để ý đến số 45, nên rất có thể x7=”45”.");
@@ -291,10 +292,20 @@ void PartOne()
     StartConversation("","Resources/image/image_15.jpg","","Mặc dù đi ngủ nhưng ở trong chăn, Ling vẫn đang bấm điện thoại.");
 
     StartConversation("","Resources/image/image_16.jpg","","Tình cờ khi Ling vào chơi cờ vua, Linh thấy được số lượng cái đinh ở trên mỗi cây và màu sắc của đinh tượng trưng cho các quân cờ.");
+    ls[0]=ChessQuiz();
+    SaveDataArray("ls.txt",ls,6);
+    switch(ls[0])
+    {
+        case 1:
+            StartConversation("","Resources/image/image_17.jpg","","Sau 1 hồi giải các thế cờ, Ling nhận thấy chỉ cần đi 2 nước là Nbd2 và Hd4xTa4 là có thể chiếu hết vua đen dù đen có đi nước nào chăng nữa, từ đó suy ra có thể x9 = ”Nb2d2 Hd4xTa4”.");
 
-    StartConversation("","Resources/image/image_17.jpg","","Sau 1 hồi giải các thế cờ, Ling nhận thấy chỉ cần đi 2 nước là Nbd2 và Hd4xTa4 là có thể chiếu hết vua đen dù đen có đi nước nào chăng nữa, từ đó suy ra có thể x9 = ”Nb2d2 Hd4xTa4”.");
+            StartConversation("","Resources/image/image_18.jpg","","Ling đang vui sướng thì cửa sổ đột nhiên bật ra và có bóng người đen hiện sau cửa sổ. Quá sợ, Ling hét lên khiến mọi người giật mình.");
+            break;
+        case 0:
+            StartConversation("","Resources/image/image_18.jpg","","Cửa sổ đột nhiên bật ra và có bóng người đen hiện sau cửa sổ. Quá sợ, Ling hét lên khiến mọi người giật mình.");
+            break;
+    }
 
-    StartConversation("","Resources/image/image_18.jpg","","Ling đang vui sướng thì cửa sổ đột nhiên bật ra và có bóng người đen hiện sau cửa sổ. Quá sợ, Ling hét lên khiến mọi người giật mình.");
 
     StartConversation("","Resources/image/image_19.jpg","","Linh ấp úng nói có ai đó ở ngoài, và chui vào chăng của Hưng, anh Minh đi ra ngoài kiểm tra nhưng không thấy ai. Linh nó rằng tên đó mặc áo hoodie đen, luôn trùm đầu bằng mũ của áo và đeo và đeo khẩu trang đen");
 
@@ -362,6 +373,91 @@ void End2_2()
     StartConversation("","Resources/Ending/End2/2.2.1.jpg","","Sau khi điều trị thành công, Ling trở về nhà. Mặc dù cố gắng tiếp tục sống, nhưng cuộc sống quá khó khăn vì mọi người không ai chấp nhận quá khứ của Ling.");
     StartConversation("","Resources/Ending/End2/2.2.2.jpg","","Không còn gì cả, không bạn bè, tiền bạc, cuộc sống khó khăn áp lực vất vả.");
     StartConversation("","Resources/Ending/End2/2.2.3.jpg","","Ling tìm kiếm cái sự giải thoát cho mình bằng một sợi dây. ");
+}
+
+void phase4()
+{
+    StartConversation("","Resources/Nam/1.jpg","","Vào ngày đẹp, gia đình Ling quyết định tổ chức đi chơi cùng với người yêu của Ling, chính là Nam");
+    StartConversation("","Resources/Nam/2.jpg","","Những ngày đi chơi diễn ra suôn sẻ, vui vẻ của Ling tự nhiên như biến mất sau 1 đêm. Ling trở nên cáu gắt, khó ở, hay hạch sách Nam.");
+    StartConversation("","Resources/Nam/3.jpg","","Nam cũng hiểu tình trạng bệnh của Ling, nên cố giữ bình tĩnh và động viên Ling, Nam biết Ling bây giờ không còn là Ling nữa. Nam cố gắng hòa đồng với Ling, nhằm có thể hòa đồng với Ling lúc này. ");
+    StartConversation("","Resources/Nam/4.jpg","","Nhưng mọi chuyện dần đi quá xa, Ling bắt đầu đổ lỗi cho Nam không yêu mình nữa, không còn quan tâm nữa. Sau đó đổ tội cho Nam cắm sừng Ling, đưa những lời miệt thị với Nam.Dù vậy Nam vẫn bình tĩnh rồi để Ling một mình nhằm cho Ling chấn tĩnh lại ");
+    StartConversation("","Resources/Nam/5.jpg","","Nhưng chuyện không ngờ đã xảy ra Ling đã bất ngờ đâm Nam.");
+    StartConversation("","Resources/Nam/6.jpg","","Biết là Ling không còn bình tĩnh được,Nam chạy cắt và cắt đuôi được Ling.");
+    StartConversation("","Resources/Nam/7.jpg","","Sau đó đặt ra những ký hiệu gợi ý ở các khu rừng rồi chui vào 1 cái hang dưới vách núi rồi bắt đầu gọi cứu hộ.");
+    StartConversation("","Resources/Nam/8.jpg","","Nhưng điều Nam không ngờ tới là Ling bám theo vết máu và đã tìm ra Nam. ");
+    StartConversation("","Resources/Nam/9.jpg","","Trong cơ giận dữ, Ling giết luôn Nam một cách dã man. ");
+    StartConversation("","Resources/Nam/10.jpg","","Sau một lúc, Ling đột nhiên như trở lại, thấy những gì mình đã, quá sợ hãi, ");
+    StartConversation("","Resources/Nam/11.jpg","","Ling chạy đi mà không biết đi đâu trong cơn mưa lớn. ");
+    StartConversation("","Resources/Nam/12.jpg","","Bất ngờ gặp bố mẹ Ling.Thấy bộ dang của Ling, bố mẹ Ling sợ hãi và hỏi Ling ổn không.");
+    StartConversation("","Resources/Nam/13.jpg","","Ling không nói gì mà trèo lên vách núi gần đó. ");
+    StartConversation("","Resources/Nam/14.jpg","","Vừa trèo lên xong, vách núi sạt lở, chôn vùi bố mẹ Ling và khiến họ thiệt mạng. Ling ở trên đầu cũng bị cuốn đi.");
+    StartConversation("","Resources/Nam/15.jpg","","Mặc dù không nghiêm trọng như bố mẹ nhưng Ling vẫn bị bất tỉnh");
+    StartConversation("Resources/Nam/16.1.jpg","Resources/16.jpg","Người lạ mặt","Ling hoàng hồn hỏi người lạ mặt là ai, hỏi tại sao lại biết mọi chuyện. Hắn nói không quan trọng, nhiện vụ của hắn là bảo vệ Ling khỏi sự thật động trờ đó, bây giờ chỉ cần rời khỏi đây và sẽ sống một cuộc sống của người bình thường. Nếu không, Ling sẽ bị mọi người đánh giá, bị xã hội bỏ rơi, xa lánh. Hắn nói về xã hội “Xã hội này rất tàn nhẫn, nó sẽ dùng quá khứ để phán xét và vùi dập bạn cho dù hiện tại bạn có tốt thế nào chăng nữa”. Vì thế cần giấu nghẹm bí mật này đi, và Ling sẽ được sống một cuộc sống bình thường. Ling lưỡng lự định rời đi theo hắn nhưng đột nhiên Nam xuất hiện sau hắn.");
+    StartConversation("Resources/Nam/17.1.jpg","Resources/17.jpg","Nam","Nam ngăn Ling rời đi và nói rằng tốt nhất hãy chấp nhận sự thật: “Xã hội này vốn tàn nhẫn, và chúng ta phải chấp nhận sống chung với nó”. Nam nói rằng Ling phải chấp nhận bản thân, dù gì sớm hay muộn mọi người cũng sẽ biết được sự thật. Và quan trọng hơn, mọi người biết được tình trạng của Ling và sẽ thông cảm cho Ling. Hai người cãi nhau nảy lửa và càng ngày càng gay gắt.");
+    StartConversation("","Resources/Nam/18.jpg","","Quá sốc và áp lực, Ling bất ngờ ngất đi  trước sự ngỡ ngàng của 2 người.");
+    StartConversation("","Resources/Nam/19.jpg","","Ling tỉnh dậy, bác sĩ vui mừng báo cho mọi người. Mọi người nói Ling đã hôn mê được vài ngày rồi.");
+    StartConversation("","Resources/Nam/20.jpg","","Ling lúc này đã nhớ mọi thứ thứ nên xin lỗi mọi người, cảm ơn mọi người đã cứu mình khi gặp nạn.");
+    StartConversation("","Resources/Nam/21.jpg","","Bác sĩ dặn dò mọi người, trước khi rời đi, trong đó hãy nhẹ nhàng với Ling vì Ling đã trải qua quá nhiều cú sốc.");
+}
+
+int ChessQuiz()
+{
+    cleardevice();
+    readimagefile("Resources/chess/chess1.jpg",400,0,900,400);
+    system("cls");
+    printf("\n\tĐi nước nào để có thể chiếu hết nhỉ\n\t 1.Hxf6+(Hậu trắng ăn mã đen) \t 2.Xc1(Xe trắng chồng quân với hậu) \t3.h3(Lên tốt ở góc đuổi hậu đi) \t4.Mbd2(chuyển mã ra giữa bàn cờ)\n");
+    printf("\tNhập nước bạn muốn đi: ");
+    char ip=(char)getch();
+    printf("%c",ip);
+    delay(500);
+    int attemp=0;
+    while(ip!='1')
+    {
+        system("cls");
+        attemp++;
+        if(attemp==3)
+            return 0;
+        printf("Hmm, hình như không phải, vậy phải đi nước nào nhỉ\n\t1.Hxf6+(Hậu trắng ăn mã đen) \t2.Xc1(Xe trắng chồng quân với hậu) \t3.h3(Lên tốt ở góc đuổi hậu đi) \t4.Mbd2(chuyển mã ra giữa bàn cờ)\n\tNhập nước bạn muốn đi: ");
+        ip=(char)getch();
+        printf("%c",ip);
+        delay(500);
+    }
+
+    system("cls");
+    cleardevice();
+    readimagefile("Resources/chess/chess1.1.jpg",400,0,900,400);
+    delay(1000);
+    cleardevice();
+    readimagefile("Resources/chess/chess1.2.jpg",400,0,900,400);
+    printf("\n\tẤn phím bất kỳ để tiếp tục");
+    getch();
+    system("cls");
+    printf("\n\Hình như đúng rồi này, chỉ cần 1 nước nữa là chiếu hết\n\t1.Xc1(xe ra hàng thứ 3) \t2.h3(lên tốt đuổi hậu đi) \t3.Txf6(Tượng trắng ở ô đen ăn tốt) \t4.Tc6(Tượng trắng ở ô trắng lên hàng ngang thứ 6 thí tượng)\n");
+    printf("Nhập nước bạn muốn đi: ");
+
+    ip=(char)getch();
+    printf("%c",ip);
+    delay(500);
+    attemp=0;
+    while(ip!='3')
+    {
+        system("cls");
+        attemp++;
+        if(attemp==3)
+            return 0;
+        printf("Hmm, hình như không phải, vậy phải đi nước nào nhỉ\n\t1.Xc1(xe ra hàng thứ 3) \t2.h3(lên tốt đuổi hậu đi) \t3.Txf6(Tượng trắng ở ô đen ăn tốt) \t4.Tc6(Tượng trắng ở ô trắng lên hàng ngang thứ 6 thí tượng)\n\tNhập nước bạn muốn đi: ");
+        ip=(char)getch();
+        printf("%c",ip);
+        delay(500);
+    }
+
+    readimagefile("Resources/chess/chess1.3.jpg",400,0,900,400);
+
+
+    printf("\n\tYeah mình chiếu hết rồi!!!\nẤn phím bất kỳ để tiếp tục");
+    getch();
+    return 1;
+
 }
 
 

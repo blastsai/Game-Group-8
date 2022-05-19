@@ -1,0 +1,23 @@
+void phase4(){
+StartConversation("","Resources/1.jpg","","Vào ngày đẹp, gia đình Ling quyết định tổ chức đi chơi cùng với người yêu của Ling, chính là Nam");
+    StartConversation("","Resources/2.jpg","","Những ngày đi chơi diễn ra suôn sẻ, vui vẻ của Ling tự nhiên như biến mất sau 1 đêm. Ling trở nên cáu gắt, khó ở, hay hạch sách Nam.");
+    StartConversation("","Resources/3.jpg","","Nam cũng hiểu tình trạng bệnh của Ling, nên cố giữ bình tĩnh và động viên Ling, Nam biết Ling bây giờ không còn là Ling nữa. Nam cố gắng hòa đồng với Ling, nhằm có thể hòa đồng với Ling lúc này. ");
+    StartConversation("","Resources/4.jpg","","Nhưng mọi chuyện dần đi quá xa, Ling bắt đầu đổ lỗi cho Nam không yêu mình nữa, không còn quan tâm nữa. Sau đó đổ tội cho Nam cắm sừng Ling, đưa những lời miệt thị với Nam.Dù vậy Nam vẫn bình tĩnh rồi để Ling một mình nhằm cho Ling chấn tĩnh lại ");
+    StartConversation("","Resources/5.jpg","","Nhưng chuyện không ngờ đã xảy ra Ling đã bất ngờ đâm Nam.");
+    StartConversation("","Resources/6.jpg","","Biết là Ling không còn bình tĩnh được,Nam chạy cắt và cắt đuôi được Ling.");
+    StartConversation("","Resources/7.jpg","","Sau đó đặt ra những ký hiệu gợi ý ở các khu rừng rồi chui vào 1 cái hang dưới vách núi rồi bắt đầu gọi cứu hộ.");
+    StartConversation("","Resources/8.jpg","","Nhưng điều Nam không ngờ tới là Ling bám theo vết máu và đã tìm ra Nam. ");
+    StartConversation("","Resources/9.jpg","","Trong cơ giận dữ, Ling giết luôn Nam một cách dã man. ");
+    StartConversation("","Resources/10.jpg","","Sau một lúc, Ling đột nhiên như trở lại, thấy những gì mình đã, quá sợ hãi, ");
+    StartConversation("","Resources/11.jpg","","Ling chạy đi mà không biết đi đâu trong cơn mưa lớn. ");
+    StartConversation("","Resources/12.jpg","","Bất ngờ gặp bố mẹ Ling.Thấy bộ dang của Ling, bố mẹ Ling sợ hãi và hỏi Ling ổn không.");
+    StartConversation("","Resources/13.jpg","","Ling không nói gì mà trèo lên vách núi gần đó. ");
+    StartConversation("","Resources/14.jpg","","Vừa trèo lên xong, vách núi sạt lở, chôn vùi bố mẹ Ling và khiến họ thiệt mạng. Ling ở trên đầu cũng bị cuốn đi.");
+    StartConversation("","Resources/15.jpg","","Mặc dù không nghiêm trọng như bố mẹ nhưng Ling vẫn bị bất tỉnh");
+    StartConversation("Resources/16.1.jpg","Resources/16.jpg","Người lạ mặt","Ling hoàng hồn hỏi người lạ mặt là ai, hỏi tại sao lại biết mọi chuyện. Hắn nói không quan trọng, nhiện vụ của hắn là bảo vệ Ling khỏi sự thật động trờ đó, bây giờ chỉ cần rời khỏi đây và sẽ sống một cuộc sống của người bình thường. Nếu không, Ling sẽ bị mọi người đánh giá, bị xã hội bỏ rơi, xa lánh. Hắn nói về xã hội “Xã hội này rất tàn nhẫn, nó sẽ dùng quá khứ để phán xét và vùi dập bạn cho dù hiện tại bạn có tốt thế nào chăng nữa”. Vì thế cần giấu nghẹm bí mật này đi, và Ling sẽ được sống một cuộc sống bình thường. Ling lưỡng lự định rời đi theo hắn nhưng đột nhiên Nam xuất hiện sau hắn.");
+    StartConversation("Resources/17.1.jpg","Resources/17.jpg","Nam","Nam ngăn Ling rời đi và nói rằng tốt nhất hãy chấp nhận sự thật: “Xã hội này vốn tàn nhẫn, và chúng ta phải chấp nhận sống chung với nó”. Nam nói rằng Ling phải chấp nhận bản thân, dù gì sớm hay muộn mọi người cũng sẽ biết được sự thật. Và quan trọng hơn, mọi người biết được tình trạng của Ling và sẽ thông cảm cho Ling. Hai người cãi nhau nảy lửa và càng ngày càng gay gắt.");
+    StartConversation("","Resources/18.jpg","","Quá sốc và áp lực, Ling bất ngờ ngất đi  trước sự ngỡ ngàng của 2 người.");
+    StartConversation("","Resources/19.jpg","","Ling tỉnh dậy, bác sĩ vui mừng báo cho mọi người. Mọi người nói Ling đã hôn mê được vài ngày rồi.");
+    StartConversation("","Resources/20.jpg","","Ling lúc này đã nhớ mọi thứ thứ nên xin lỗi mọi người, cảm ơn mọi người đã cứu mình khi gặp nạn.");
+    StartConversation("","Resources/21.jpg","","Bác sĩ dặn dò mọi người, trước khi rời đi, trong đó hãy nhẹ nhàng với Ling vì Ling đã trải qua quá nhiều cú sốc.");
+}
