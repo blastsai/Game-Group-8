@@ -253,7 +253,9 @@ void Day3()
     StartConversation("", "Resources/Para3_image4.jpg", "", " Ling quá sợ hãi rồi ngất đi. Khi tỉnh lại thì thấy mọi người đang chăm sóc Ling.");
     StartConversation("", "Resources/Para3_image5.jpg", "", "Sau khi nghe toàn bộ mọi chuyện, Nam nói rằng mình phải tìm được manh mối cuối cùng là x7 trước khi rời khỏi đây, vì hắn sẽ cố gắng thủ tiêu manh mối cuối cùng đó. Ling đồng ý và nói rằng rất có thể manh mối cuối cùng liên quan tới cái đèn nhấp nháy.");
     StartConversation("", "Resources/Para3_image6.jpg", "", "Vừa dứt lời thì đèn phòng nhấp nháy thật và nhấp nháy rất lạ, có vẻ có quy luật riêng.");
-    StartQuestion("","Nhớ thêm ảnh","","Đèn nhấp nháy như là biểu thị: -..- --... ; Mã trên có 1 nghĩa gì\n\t1. x7 2. x10 3. x11 4.x12 ",1);
+    StartQuestion("","Nhớ thêm ảnh câu hỏi ra x7","","Đèn nhấp nháy như là biểu thị: -..- --... ; Mã trên có 1 nghĩa gì\n\t1. x7 2. x10 3. x11 4.x12 ",1);
+    StartConversation("","Nhớ thêm ảnh mọi người nhình thấy hộp điện bị khóa","","Mọi người đến chỗ khu điều khiển điện để kiểm tra. Anh Minh và chị Ngân bất ngời khi các mạch điều khiển bị khóa bằng mật khẩu, để mở phải nhập đúng mật khẩu");
+    ls[]=CalculusQuiz();
     StartConversation("", "Resources/Para3_image8.jpg", "", "Là sinh viên khá trong lập trình Adruno, Ling nó rằng để có thể lên được các tín hiện như vậy, thì phải lập trình cho mạnh tự động rất phức tạp. Vì thế Ling cùng mọi người ra khu điều khiển điện.");
     StartConversation("", "Resources/Para3_image9.jpg", "", "Và thấy rằng bảng điện bị nối thêm 1 mạch Adruno, thậm chí nó có cả màn hình hiện lên các lệnh lập trình đấy.");
     StartConversation("", "Resources/Para3_image10.jpg", "", "Hưng và Ling ghi bắt đầu nghiên cứu. Kéo đến cuối họ thấy comment của hàm “ for(int i=0;i<INT.MAX;i++) printf(“45”); “ được lặp lại nhiều lần, có vẻ như người viết muốn mọi người để ý đến số 45, nên rất có thể x7=”45”.");
