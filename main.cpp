@@ -18,10 +18,12 @@ void End1_2();
 void End2_1();
 void End2_2();
 void End();
-int ChessQuiz();
 
 int*ls;
+int ChessQuiz();
+int Minigame1();
 int Minigame2();
+int CalculusQuiz();
 
 int main()
 {
@@ -29,8 +31,7 @@ int main()
     int menuSelect=-1;
     int gameData=0;
     ls=(int*)calloc(sizeof(int),6);
-
-    //Minigame2();
+    PlaySound(TEXT("Resources/UpdateSound/Relax.wav"), NULL, SND_LOOP | SND_ASYNC);
     do
     {
         menuSelect=Menu("Resources/Menu.jpg");
@@ -49,19 +50,18 @@ int main()
         default:
             break;
         }
-    }while(menuSelect==-1);
+    }
+    while(menuSelect==-1);
 
-    //gameData=0;
 
     while(1)
     {
         switch(gameData)
         {
         case 0:
-
+            PartOne();
             gameData++;
             SaveData("GameData.txt",gameData);
-            PartOne();
             break;
         case 1:
             Day2();
@@ -69,19 +69,18 @@ int main()
             SaveData("GameData.txt",gameData);
             break;
         case 2:
+            Day3();
             gameData++;
             SaveData("GameData.txt",gameData);
-            Day3();
             break;
         case 3:
+            phase4();
             gameData++;
             SaveData("GameData.txt",gameData);
-            phase4();
             break;
         case 4:
-            gameData++;
-            SaveData("GameData.txt",gameData);
             End();
+            SaveData("GameData.txt",gameData);
             break;
         default:
             gameData=0;
@@ -131,6 +130,7 @@ void Scanforminigame2(int a[])
 
 int Minigame2()
 {
+    PlaySound(TEXT("Resources/UpdateSound/The Power In My Hands (feat Terence Kern).wav"), NULL, SND_LOOP | SND_ASYNC);
     printf("Luật chơi: Hãy nhớ kĩ những số sắp xuất hiện sau đó bạn sẽ phải nhập lại đúng các số đó\nVà một điều quan trọng là bạn chỉ có 10 lần chơi, xin hãy cẩn thận!!!");
     printf("\n---Nhấn phím bất kỳ để bắt đầu chơi---");
     getch();
@@ -197,28 +197,39 @@ int Minigame2()
 
 void Day2()
 {
-
+    PlaySound(TEXT("Resources/UpdateSound/Lurking.wav"), NULL, SND_LOOP | SND_ASYNC);
     StartConversation("Resources/Character/nam.jpg","Resources/Trinh/day2-1.jpg","","Sáng hôm sau mọi người hoảng hốt khi các thiết bị thông minh kể cả camera an ninh của mọi người đều bị đập hỏng không dùng được, các phương tiện đi lại cũng bị hư hại.");
     StartConversation("Resources/Character/nam.jpg","Resources/Trinh/day2-2.jpg","","Anh Minh quyết định và sửa xe để có thể đưa mọi người ra khỏi đây an toàn. Cả buổi sáng mọi người tâm sự với nhau và giúp đỡ anh Minh sửa xe.");
     StartConversation("Resources/Character/nam.jpg","Resources/Trinh/day2-3.jpg","","Đột nhiên mọi người nghe thấy tiếng giống gầm rú. Anh chị bảo đó là tiếng côn trùng hỗn tạp lại với nhau nhưng Ling lại thấy tiếng đo rất lạ.");
     StartConversation("Resources/Character/nam.jpg","Resources/Trinh/day2-4.jpg","","Mọi người ra ngoài kiểm tra kèm theo vũ khí tự vệ.  Đến nơi phát ra âm thanh to nhất, họ thấy tiếng côn trùng kết hợp lại không thành ra tiếng gì nữa mà chỉ như tiếng côn trùng bình thường.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-4.1.jpg","","Lại gần cái cây, mọi người thấy có rất nhiều những con côn trùng trên cây và bay xung quanh cây.Ling nói những tiếng tạo ra bởi côn trùng bay khỏi tổ cũng rất đặc biệt, mọi người thấy vậy liền lấy vũ khí ra đập vào cây");
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-5.jpg","","5 cái ổ côn trùng được bịt có chủ đích bằng các tờ giấy được cuộn lại. Chính cách thông và bịt các đường đi của tổ côn trùng này làm tiếng lạ khi chúng bay ra.");
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-6.jpg","","Mọi người về khu kiểm lâm và mở tờ giấy, bất ngờ thay những tờ giấy khi ghép lại tạo thành một đoạn văn gồm x1, x2 ,x3, x4, x5, là “faoijf”, “ipokpq”, “rriqpqrprqr”, “ruqbiqooujffppqfg”,”rrotaphnapbgpajhfwbgkno”.");
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-7.jpg","","Những kí tự này liệu đang tồn tại những bí ản kinh khủng thế nào đây S0S S0S S0S??????");
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-8.jpg","","Mọi người thấy rằng đây chỉ là những khí tự vô nghĩa. Bế tắc, họ cùng nhau đi ngủ, riêng anh Nam sẽ thức đêm để canh mọi người.");
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-9.jpg","","Mọi người lại được phen tá hỏa khi anh Nam bị đánh bất tỉnh, nhưng mọi người đều không bị sao.");
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-10.jpg","","Hưng không chịu được quyết định mang vũ khí ra ngoài, mọi người không cản được và bị cuốn theo Hưng, trừ Ling ở lại chăm sóc anh Nam.");
+    ls[1]=Minigame1();
+    SaveDataArray("ls.txt",ls,6);
+    if(ls[1])
+    {
+        StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-5.jpg","","5 cái ổ côn trùng được bịt có chủ đích bằng các tờ giấy được cuộn lại. Chính cách thông và bịt các đường đi của tổ côn trùng này làm tiếng lạ khi chúng bay ra.");
+        StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-6.jpg","","Mọi người về khu kiểm lâm và mở tờ giấy, bất ngờ thay những tờ giấy khi ghép lại tạo thành một đoạn văn gồm x1, x2 ,x3, x4, x5, là “faoijf”, “ipokpq”, “rriqpqrprqr”, “ruqbiqooujffppqfg”,”rrotaphnapbgpajhfwbgkno”.");
+        StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-7.jpg","","Những kí tự này liệu đang tồn tại những bí ản kinh khủng thế nào đây S0S S0S S0S??????");
+        StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-8.jpg","","Mọi người thấy rằng đây chỉ là những khí tự vô nghĩa. Bế tắc, họ cùng nhau đi ngủ, riêng anh Minh sẽ thức đêm để canh mọi người.");
+    }
+    else
+    {
+        StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-8.jpg","","Lũ côn trùng quá hung hãn, mọi người chạy trốn về nhà.Sau đó, họ cùng nhau đi ngủ, riêng anh Minh sẽ thức đêm để canh mọi người.");
+    }
+    PlaySound(TEXT("Resources/UpdateSound/Guitar On The Water.wav"), NULL, SND_LOOP | SND_ASYNC);
+    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-8.jpg","","Mọi người thấy rằng đây chỉ là những khí tự vô nghĩa. Bế tắc, họ cùng nhau đi ngủ, riêng anh Minh sẽ thức đêm để canh mọi người.");
+    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-9.jpg","","Mọi người lại được phen tá hỏa khi anh Minh bị đánh bất tỉnh, nhưng mọi người đều không bị sao.");
+    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-10.jpg","","Hưng không chịu được quyết định mang vũ khí ra ngoài, mọi người không cản được và bị cuốn theo Hưng, trừ Ling ở lại chăm sóc anh Minh.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-11.jpg","","Trong lúc mọi người đang cố giữ bình tĩnh cho Hưng thì Ling từ trong nhà hét lên, khiến Hưng lao vút về nhà.");
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-12.jpg","","Nhưng xông vào nhà thì lại không thấy kẻ lạ mặt đâu, Ling nói hắn đang định phá tủ ở kia, khi nghe thấy tiếng động của mọi người lập tức rồi đi.  Ngay sau đó, anh Nam đã tỉnh lại, anh nói rằng mình bị đánh lén vào đầu nên bất tỉnh.");
+    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-12.jpg","","Nhưng xông vào nhà thì lại không thấy kẻ lạ mặt đâu, Ling nói hắn đang định phá tủ ở kia, khi nghe thấy tiếng động của mọi người lập tức rồi đi.  Ngay sau đó, anh Minh đã tỉnh lại, anh nói rằng mình bị đánh lén vào đầu nên bất tỉnh.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-13.jpg","","Anh đưa chìa khóa tủ cho mọi người và nói trong tủ đấy chính là bẫy động vật anh tự làm nhưng chưa hoàn thành.");
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-14.jpg","","Hưng cùng với anh Nam với sự sáng tạo đã hoàn thành và cải tiến cái bẫy. Hưng nói hắn muốn lấy cái bẫy chắc chắn do không muốn mọi người có cơ hội được sử dụng bẫy");
+    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-14.jpg","","Hưng cùng với anh Minh với sự sáng tạo đã hoàn thành và cải tiến cái bẫy. Hưng nói hắn muốn lấy cái bẫy chắc chắn do không muốn mọi người có cơ hội được sử dụng bẫy");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-15.jpg","","Mọi người quyết định sẽ đặt bẫy này vào tối nay.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-16.jpg","","Mọi người vừa lên giường thì nghe thấy tiếng leng keng xung quanh ở ngoài lúc đi xa lúc đến gân. Tự nhiên “Choang” một cái – cái bẫy đã bắt được con gì đó.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-17.jpg","","Họ ra ngoài kiểm tra và biết được đấy là con chó hoang được đeo chiếc chuông ở chân, cổ và tay. Ling và Hiền cố giỗ con chó để nó bình tĩnh nhưng không được.");
     ls[2]=Minigame2();
     SaveDataArray("ls.txt",ls,6);
-    if(ls[2]==1)
+    if(ls[2])
     {
         StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-18.jpg","","Hưng bất ngờ đè con chó xuống rồi lấy những chiếng chuông đi, sau đó đuổi con chó. Trong chuông mọi người phát hiện được 3 mảnh giấy khi ghép lại ra các gợi ý còn lại x6, x8, x10 lần lượt là “59”, “57931084”,”263930”.");
         StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-19.jpg","","Lại là những kí tự trông vô nghĩa nhưng đầy mờ ám và nguy hiểm");
@@ -226,14 +237,16 @@ void Day2()
     }
     else
     {
-        StartConversation("","Nhớ thêm ảnh","","Con chó chạy mất, mọi người thất vọng quay về đi ngủ");
+        PlaySound(TEXT("Resources/UpdateSound/Evans.wav"), NULL, SND_LOOP | SND_ASYNC);
+        StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-18.1.jpg","","Con chó vùng vẫy quá mạnh, mọi người không thể giữ được nó chạy vụt ra ngoài rồi biến mất");
+        StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-20.jpg","","Sau đó, mọi người bàn luận rồi ai về phòng đấy ngủ, Nam và Hưng sẽ canh chừng mọi người.");
     }
+
+
 }
-
-
-
 void Day3()
 {
+    PlaySound(TEXT("Resources/UpdateSound/Evans.wav"), NULL, SND_LOOP | SND_ASYNC);
     StartConversation("", "Resources/Para3_image1.jpg", "", "Không như những hôm trước, đêm qua êm đềm mà không có gì lạ diễn ra. Mọi người cùng nhau chuẩn bị vào buổi sáng trong khi Nam và Hưng đi ngủ.");
     StartConversation("", "Resources/Para3_image2.jpg", "", " Đến chiều, mọi người nhận được tin vui khi xe sắp hoàn thành việc sửa chữa và mọi người có thể an tâm rời khỏi đây trong chiều mai. Mọi người ai cũng vui sướng và mong chờ qua ngày hôm nay.");
     StartConversation("", "Resources/Para3_image3.jpg", "", "Khi Ling đi vệ sinh xong, vừa bước ra ngoài thì đột nhiên đụng mặt kẻ lạ mặt đối mặt. Ling đứng sở ra nhìn hắn, hắn không định làm gì Ling, nhưng đe dọa Ling rằng “Nếu mày và nhóm mày tiếp tục đi xa hơn, thì mọi chuyện sẽ không còn đơn giản là bị phá hoại nữa đâu”, rồi hắn biến mất.");
@@ -260,60 +273,43 @@ void Day3()
 
 void PartOne()
 {
-
+    PlaySound(TEXT("Resources/UpdateSound/Shenanigans_.wav"), NULL, SND_LOOP | SND_ASYNC);
     StartConversation("","Resources/image/image_1.jpg","","Ling là một học sinh chăm chỉ học ở 1 trường Đại Học danh giá.");
-
     StartConversation("","Resources/image/image_2.jpg","","Sau 1 buổi đi chơi cùng với gia đình ở 1 vùng núi rừng");
-
     StartConversation("","Resources/image/image_3.jpg","","Gia đình Ling đã gặp nạn sau 1 vụ sạt lở. Tai nạn khiến bố mẹ Ling thiệt mạng, Ling bị hôn mê và 1 người không rõ danh tính đi với gia đình.");
-
     StartConversation("","Resources/image/image_4.jpg","","Sau khi tỉnh lại, Ling luôn cảm thấy có gì đó uẩn khúc trong vụ tai nạn này nên quyết định quay lại nơi xảy ra tai nạn để điều tra");
-
     StartConversation("","Resources/image/image_5.jpg","",".Đi cùng Ling gồm bạn Nam, Hưng, và Hiền. Họ gọi cho đội kiểm lâm ở khu rừng và quyết định ở lại khu kiểm lâm 1 tuần để cùng Ling đi điều tra dưới danh nghĩa là sinh viên tình nguyện.");
-
     StartConversation("","Resources/image/image_6.jpg","","Đến khu kiểm lâm, nhóm được quản lý và ở tại 1 khu riêng. Người quản lý nhóm gồm chị Ngân và anh Minh");
-
     StartConversation("","Resources/image/image_7.jpg","","Vào buổi đêm trong lúc nhóm nghỉ ngơi tâm sự, anh chị kể rằng, từ lúc gia đình Linh xảy ra tai nạn ở đây xuất hiện rất nhiều hiện tượng lạ như tiếng ai đó gào vào buổi đêm, tiếng leng keng xung quanh khu kiểm, đèn bị nhấp nháy bất thường. Mọi người nghe xong rợi hết cả tóc gáy và quyết định tối mai sẽ đi điều tra.");
-
     StartConversation("","Resources/image/image_8.jpg","","Sau khi nhóm chấn tĩnh lại, chị Ngân nói rằng nạn nhân trước khi gặp nạn ở vụ sạt lở để lại 1 lời nhắn, chị đã kịp chụp trước khi đưa cho cảnh sát rồi để mọi người xem, hiện giờ không biết lời nhắn đó là của ai trong vụ tai nạn và nó có ý nghĩa gì. Lời nhắn đó là “ printf(“%s”, x1); printf(“%s”, x2); printf(“%s”, x3); printf(“%s”, x4); printf(“%s”, x5); printf(“%s”, x6); printf(“%s”, x7); printf(“%s”, x8); printf(“%s”, x9); printf(“%s”, x10); ”");
-
     StartConversation("","Resources/image/image_9.jpg","","Sáng hôm sau khi mọi người tỉnh dậy, nhóm được các anh chị kiểm lâm nấu ăn sáng và không bắt dậy sớm vì thấy nhóm hôm qua đã mệt và bị anh chị dọa hơi quá");
-
     StartConversation("","Resources/image/image_10.jpg","",". Sau khi nhóm chấn tĩnh lại, chị Ngân nói rằng nạn nhân trước khi gặp nạn ở vụ sạt lở để lại 1 lời nhắn, chị đã kịp chụp trước khi đưa cho cảnh sát rồi để mọi người xem, hiện giờ không biết lời nhắn đó là của ai trong vụ tai nạn và nó có ý nghĩa gì. Lời nhắn đó là“ printf(“%s”, x1); printf(“%s”, x2); printf(“%s”, x3); printf(“%s”, x4); printf(“%s”, x5); printf(“%s”, x6); printf(“%s”, x7); printf(“%s”, x8); printf(“%s”, x9); printf(“%s”, x10); ”  Có vẻ nạn nhân là người thích lập trình, mà cả gia đình đều theo khuynh hướng lập trình nên không biết ai thật.");
-
     StartConversation("","Resources/image/image_11.jpg","","Một trong những điều đó là những cái đinh xuất hiện bất thường ở khu rừng keo gần đây.");
-
     StartConversation("","Resources/image/image_12.jpg","","Đến buổi chiều được nghỉ ngơi, nhóm quay lại khu rừng keo và ghi lại chi tiết những bất thường ở đây. Ling lúc đến khu này luôn cảm thấy lạnh lạnh như bị ai đang theo dõi nên lúc nào cũng phải rúc vào đi gần ai đó.");
-
     StartConversation("","Resources/image/image_13.jpg","","Sau đó, nhóm cùng nhau về nơi nghỉ ngơi và phân tích. Sau 1 hồi phân tích, họ thấy các vị trí đóng đinh hao hao giống x9.");
-
     StartConversation("","Resources/image/image_14.jpg","","Mọi người mừng rỡ vì tìm thấy manh mối, nhưng dần cũng đi vào bế tắc và chán nản. Sau một lúc lâu không có kết quả mọi người quyết định đi ngủ và để đến mai.");
-
     StartConversation("","Resources/image/image_15.jpg","","Mặc dù đi ngủ nhưng ở trong chăn, Ling vẫn đang bấm điện thoại.");
-
     StartConversation("","Resources/image/image_16.jpg","","Tình cờ khi Ling vào chơi cờ vua, Linh thấy được số lượng cái đinh ở trên mỗi cây và màu sắc của đinh tượng trưng cho các quân cờ.");
     ls[0]=ChessQuiz();
     SaveDataArray("ls.txt",ls,6);
+    PlaySound(TEXT("Resources/UpdateSound/Lurking.wav"), NULL, SND_LOOP | SND_ASYNC);
     switch(ls[0])
     {
-        case 1:
-            StartConversation("","Resources/image/image_17.jpg","","Sau 1 hồi giải các thế cờ, Ling nhận thấy chỉ cần đi 2 nước là Nbd2 và Hd4xTa4 là có thể chiếu hết vua đen dù đen có đi nước nào chăng nữa, từ đó suy ra có thể x9 = ”Nb2d2 Hd4xTa4”.");
-
-            StartConversation("","Resources/image/image_18.jpg","","Ling đang vui sướng thì cửa sổ đột nhiên bật ra và có bóng người đen hiện sau cửa sổ. Quá sợ, Ling hét lên khiến mọi người giật mình.");
-            break;
-        case 0:
-            StartConversation("","Resources/image/image_18.jpg","","Cửa sổ đột nhiên bật ra và có bóng người đen hiện sau cửa sổ. Quá sợ, Ling hét lên khiến mọi người giật mình.");
-            break;
+    case 1:
+        StartConversation("","Resources/image/image_17.jpg","","Sau 1 hồi giải các thế cờ, Ling nhận thấy chỉ cần đi 2 nước là Nbd2 và Hd4xTa4 là có thể chiếu hết vua đen dù đen có đi nước nào chăng nữa, từ đó suy ra có thể x9 = ”Nb2d2 Hd4xTa4”.");
+        StartConversation("","Resources/image/image_18.jpg","","Ling đang vui sướng thì cửa sổ đột nhiên bật ra và có bóng người đen hiện sau cửa sổ. Quá sợ, Ling hét lên khiến mọi người giật mình.");
+        break;
+    case 0:
+        StartConversation("","Resources/image/image_18.jpg","","Cửa sổ đột nhiên bật ra và có bóng người đen hiện sau cửa sổ. Quá sợ, Ling hét lên khiến mọi người giật mình.");
+        break;
     }
-
-
     StartConversation("","Resources/image/image_19.jpg","","Linh ấp úng nói có ai đó ở ngoài, và chui vào chăng của Hưng, anh Minh đi ra ngoài kiểm tra nhưng không thấy ai. Linh nó rằng tên đó mặc áo hoodie đen, luôn trùm đầu bằng mũ của áo và đeo và đeo khẩu trang đen");
-
     StartConversation("","Resources/image/image_20.jpg","","Sau đó Linh kể hết cho mọi người đầu đuôi câu chuyện, mọi người dỗ Linh sau đó đi ngủ.");
 }
 
 void End()
 {
+    PlaySound(TEXT("Resources/UpdateSound/Death.wav"), NULL, SND_LOOP | SND_ASYNC);
     int r1[2]= {1,2},r;
     r=StartSelection("","","","Nếu bạn là Hiền, người bị mất người bạn thân là Hưng và bị giết bởi chính tay Ling, bạn nghĩ sao về Ling:\n\t1.Ling con độc ác máu lạnh, không xứng đáng được làm người/n/t2.Ling là người chụi nhiều quá khứ đau khổ, nên không thể trách Ling tất cả được",r1,2);
     if(r==1)
@@ -402,6 +398,7 @@ void phase4()
 
 int ChessQuiz()
 {
+    PlaySound(TEXT("Resources/UpdateSound/Magical.wav"), NULL, SND_LOOP | SND_ASYNC);
     cleardevice();
     readimagefile("Resources/chess/chess1.jpg",400,0,900,400);
     system("cls");
@@ -459,6 +456,109 @@ int ChessQuiz()
     return 1;
 
 }
+
+int Minigame1()
+{
+    PlaySound(TEXT("Resources/UpdateSound/Fight On.wav"), NULL, SND_LOOP | SND_ASYNC);
+    FILE *f;
+    FILE *fd;
+    fd=fopen("Dapan.txt","r");
+    int *a;
+    a=(int*)malloc(12*sizeof(int));
+    for(int i=0; i<12; i++)
+    {
+        fscanf(fd,"%d",&a[i]);
+    }
+    f=fopen("Cauhoi.txt","r");
+    char s[12][40];
+    StartConversation("Resources/nam.jpg","Resources/Trinh/day2minigame1-1.jpg","","Hãy vượt qua thử thách để đuổi lũ côn trùng đi!!!");
+    int i;
+    int n;
+    int t;
+    int mat=0;
+    for (i=0; i<12; i++)
+    {
+        fscanf(f,"%s",s+i);
+    }
+    int b[50];
+    randomAnswer(b);
+    for(i=0; i<5; i++)
+    {
+        printf("Câu hỏi %d:%s\n",i+1,s[b[i]]);
+        printf("Câu trả lời:");
+        n=input();
+        if(n==a[b[i]])
+        {
+            mat++;
+            if(t!=mat)
+            {
+                if(mat==1)
+                {
+                    StartAnswer("Resources/nam.jpg","Resources/Trinh/day2minigame1-4.jpg","","");
+                }
+                if(mat==2)
+                {
+                    StartAnswer("Resources/nam.jpg","Resources/Trinh/day2minigame1-5.jpg","","");
+                }
+                if(mat==3)
+                {
+                    StartAnswer("Resources/nam.jpg","Resources/Trinh/day2minigame1-6.jpg","","");
+                }
+                if(mat==4)
+                {
+                    StartAnswer("Resources/nam.jpg","Resources/Trinh/day2minigame1-7.jpg","","");
+                }
+                if(mat==5)
+                {
+                    StartAnswer("Resources/nam.jpg","Resources/Trinh/day2minigame1-7.jpg","","");
+                }
+                t=mat;
+            }
+        }
+    }
+    fclose(f);
+    fclose(fd);
+    free(a);
+    if(mat==5)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int CalculusQuiz()
+{
+    cleardevice();
+    readimagefile("Resources/chess/matkhau.jpg",50,0,1230,400);
+    system("cls");
+    printf("\nNhâp mật khẩu từ bàn phím, mật khẩu chỉ có 1 chữ số: ");
+    int x=getch();
+    int attemp=5;
+    while(x!=(int)'0')
+    {
+        system("cls");
+        attemp--;
+        if(attemp<=0)
+        {
+            return 0;
+        }
+        printf("Mật khẩu sai, bạn còn %d lần thử, mời bạn nhập lại: ",attemp);
+        x=getch();
+        printf("%c",(char)x);
+        delay(500);
+    }
+    if(attemp<7)
+    {
+        system("cls");
+        printf("Đáp án đúng rồi chúc mừng bạn");
+        return 1;
+    }
+}
+
+
 
 
 

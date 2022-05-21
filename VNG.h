@@ -416,3 +416,40 @@ int*LoadDataArray(char fileName[],int len)
 
     return NULL;
 }
+//thêm vào VNG.h
+int random(int a,int b)
+{
+    return a+rand()%(b+1-a);
+}
+
+int randomAnswer(int s[])
+{
+    srand(time(0));
+    int check;
+    int b[100];
+    int count=0;
+    int i=0;
+    int dem=0;
+    int j=0;
+    while(i<5)
+    {
+        check=random(0,12);
+        for(int j=0;j<dem;j++)
+        {
+            if(b[j]==check)
+            {
+                count++;
+            }
+        }
+        if(count==0)
+        {
+            s[j]=check;
+            j++;
+            i++;
+        }
+        b[dem]=check;
+        count=0;
+        dem++;
+    }
+    return *s;
+}
