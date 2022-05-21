@@ -24,12 +24,12 @@ int ChessQuiz();
 int Minigame1();
 int Minigame2();
 int CalculusQuiz();
-
+int PrintfQuiz();
+int gameData=0;
 int main()
 {
     InitEverythings("FIND THE TRUTH");
     int menuSelect=-1;
-    int gameData=0;
     ls=(int*)calloc(sizeof(int),6);
     PlaySound(TEXT("Resources/UpdateSound/Relax.wav"), NULL, SND_LOOP | SND_ASYNC);
     do
@@ -70,8 +70,6 @@ int main()
             break;
         case 2:
             Day3();
-            gameData++;
-            SaveData("GameData.txt",gameData);
             break;
         case 3:
             phase4();
@@ -255,22 +253,51 @@ void Day3()
     StartConversation("", "Resources/Para3_image6.jpg", "", "Vừa dứt lời thì đèn phòng nhấp nháy thật và nhấp nháy rất lạ, có vẻ có quy luật riêng.");
     StartQuestion("","Nhớ thêm ảnh câu hỏi ra x7","","Đèn nhấp nháy như là biểu thị: -..- --... ; Mã trên có 1 nghĩa gì\n\t1. x7 2. x10 3. x11 4.x12 ",1);
     StartConversation("","Nhớ thêm ảnh mọi người nhình thấy hộp điện bị khóa","","Mọi người đến chỗ khu điều khiển điện để kiểm tra. Anh Minh và chị Ngân bất ngời khi các mạch điều khiển bị khóa bằng mật khẩu, để mở phải nhập đúng mật khẩu");
-    ls[]=CalculusQuiz();
-    StartConversation("", "Resources/Para3_image8.jpg", "", "Là sinh viên khá trong lập trình Adruno, Ling nó rằng để có thể lên được các tín hiện như vậy, thì phải lập trình cho mạnh tự động rất phức tạp. Vì thế Ling cùng mọi người ra khu điều khiển điện.");
-    StartConversation("", "Resources/Para3_image9.jpg", "", "Và thấy rằng bảng điện bị nối thêm 1 mạch Adruno, thậm chí nó có cả màn hình hiện lên các lệnh lập trình đấy.");
-    StartConversation("", "Resources/Para3_image10.jpg", "", "Hưng và Ling ghi bắt đầu nghiên cứu. Kéo đến cuối họ thấy comment của hàm “ for(int i=0;i<INT.MAX;i++) printf(“45”); “ được lặp lại nhiều lần, có vẻ như người viết muốn mọi người để ý đến số 45, nên rất có thể x7=”45”.");
-    StartConversation("", "Resources/Para3_image11.jpg", "", "Hưng nói rằng trong cặp Ling có sách “300 bài code thiếu nhi” và sẽ cố gắng nghiên với các manh mối từ anh chị kiểm lâm đưa với manh mối tìm được. Ling không hiểu sao trong cặp mình lại có cuốn sách đấy, nên chắc là do để quên.");
-    StartConversation("", "Resources/Para3_image12.jpg", "", "Hưng và anh Hiền quyết định sẽ canh mọi người ngủ tối nay, anh Minh sẽ nghỉ ngơi để có thể đưa mọi người rời đi vào sáng mai, sau đó sẽ báo cảnh sát về những gì tìm được. ");
-    StartConversation("", "Resources/Para3_image13.jpg", "", "Sáng dậy, Ling sốc nặng khi thấy cảnh tượng kinh hoàng, tất cả mọi người đều bị đánh vào đầu bất tỉnh, còn Nam bị đánh nhẹ sau đó giả vờ ngất nên tỉnh trước Ling, nhưng Ling thì bình an vô sự.");
-    StartConversation("", "Resources/Para3_image14.jpg", "", "Nghiêm trọng hơn, Hưng đã bị chém chết.");
-    StartConversation("", "Resources/Para3_image15.jpg", "", "Ling trách mình vì đã không nghe lời tên lạ mặt, Nam động viện Ling, nói rằng dù gì chuyện đã xảy ra, nên bây giờ hãy chăm sóc mọi người trước đã.");
-    StartConversation("", "Resources/Para3_image16.jpg", "", "Trong lúc dìu xác của Hưng 2, người thấy cuốn sách được bôi đỏ bằng máu, đó là bảng mã ASCII và chương 1 của printf() .Sau một hồi đọc, họ hiểu được hàm ý Hưng để lại, đó chính là hàm trả về của printf(), ghép lại ra được 1220253948020. Nam đột nhiên nhớ ra số 45 rất quan trọng, và thay nó bằng mã ASCII, thì sẽ được 122025-948020.");
-    StartConversation("", "Resources/Para3_image17.jpg", "", "Trước khi chết, Hưng còn để lại lời nhắn chữ “MAP” ở dưới bàn, có thể nó chính là tọa độ bản đồ. Họ đối chiếu với bản đồ khu vực và nhận ra đấy là số 122.025-9.28020 trên bản đồ.");
-    StartConversation("", "Resources/Para3_image18.jpg", "", "Nam và Ling quyết định đi ra khu vực được đánh mốc đấy. Ra đến nơi, đó là khu vực vách núi dốc.");
-    StartConversation("", "Resources/Para3_image19.jpg", "", "Đột nhiên Ling bị đẩy lăn xuống vách núi.");
-    StartConversation("", "Resources/Para3_image20.jpg", "", "Ling cố gắng đứng dậy nghỉ ngơi và chui vào hốc núi nằm xuống.");
-    StartConversation("", "Resources/Para3_image21.jpg", "", "Lúc nằm xuống Ling bất ngờ phát hiện nằm bên cạnh mình là Nam. Nhưng không phải là Nam như lúc đầu, đó là xác của Nam. Ling giật mình chạy ra khỏi hang.");
-    StartConversation("", "Resources/Para3_image22.jpg", "", "Giật mình bất thình lình lần hai, trước cửa hang chí là kẻ lạ mặt. Hắn nhìn Ling, bắt đầu cởi mũ và khẩu trang, và lộ mặt; hắn là con gái !!!. Hắn kể lại mọi chuyện, và điều đó khiến Ling nhớ lại mọi chuyện trước khi xảy ra tai nạn:");
+    ls[3]=CalculusQuiz();
+    SaveDataArray("ls.txt",ls,6);
+    if(ls[3])
+    {
+        StartConversation("", "Resources/Para3_image8.jpg", "", "Là sinh viên khá trong lập trình Adruno, Ling nó rằng để có thể lên được các tín hiện như vậy, thì phải lập trình cho mạnh tự động rất phức tạp. Vì thế Ling cùng mọi người ra khu điều khiển điện.");
+        StartConversation("", "Resources/Para3_image9.jpg", "", "Và thấy rằng bảng điện bị nối thêm 1 mạch Adruno, thậm chí nó có cả màn hình hiện lên các lệnh lập trình đấy.");
+        StartConversation("", "Resources/Para3_image10.jpg", "", "Hưng và Ling ghi bắt đầu nghiên cứu. Kéo đến cuối họ thấy comment của hàm “ for(int i=0;i<INT.MAX;i++) printf(“45”); “ được lặp lại nhiều lần, có vẻ như người viết muốn mọi người để ý đến số 45, nên rất có thể x7=”45”.");
+        StartConversation("", "Resources/Para3_image11.jpg", "", "Hưng nói rằng trong cặp Ling có sách “300 bài code thiếu nhi” và sẽ cố gắng nghiên với các manh mối từ anh chị kiểm lâm đưa với manh mối tìm được. Ling không hiểu sao trong cặp mình lại có cuốn sách đấy, nên chắc là do để quên.");
+        StartConversation("", "Resources/Para3_image12.jpg", "", "Hưng và anh Hiền quyết định sẽ canh mọi người ngủ tối nay, anh Minh sẽ nghỉ ngơi để có thể đưa mọi người rời đi vào sáng mai, sau đó sẽ báo cảnh sát về những gì tìm được. ");
+        ls[4]=PrintfQuiz();
+        SaveDataArray("ls.txt",ls,6);
+        if(ls[4])
+        {
+            if(ls[0]+ls[1]+ls[2]>=3)
+            {
+                StartConversation("", "Resources/Para3_image13.jpg", "", "Sáng dậy, Ling sốc nặng khi thấy cảnh tượng kinh hoàng, tất cả mọi người đều bị đánh vào đầu bất tỉnh, còn Nam bị đánh nhẹ sau đó giả vờ ngất nên tỉnh trước Ling, nhưng Ling thì bình an vô sự.");
+                StartConversation("", "Resources/Para3_image14.jpg", "", "Nghiêm trọng hơn, Hưng đã bị chém chết.");
+                StartConversation("", "Resources/Para3_image15.jpg", "", "Ling trách mình vì đã không nghe lời tên lạ mặt, Nam động viện Ling, nói rằng dù gì chuyện đã xảy ra, nên bây giờ hãy chăm sóc mọi người trước đã.");
+                StartConversation("", "Resources/Para3_image16.jpg", "", "Trong lúc dìu xác của Hưng 2, người thấy cuốn sách được bôi đỏ bằng máu, đó là bảng mã ASCII và chương 1 của printf() .Sau một hồi đọc, họ hiểu được hàm ý Hưng để lại, đó chính là hàm trả về của printf(), ghép lại ra được 1220253948020. Nam đột nhiên nhớ ra số 45 rất quan trọng, và thay nó bằng mã ASCII, thì sẽ được 122025-948020.");
+                StartConversation("", "Resources/Para3_image17.jpg", "", "Trước khi chết, Hưng còn để lại lời nhắn chữ “MAP” ở dưới bàn, có thể nó chính là tọa độ bản đồ. Họ đối chiếu với bản đồ khu vực và nhận ra đấy là số 122.025-9.28020 trên bản đồ.");
+                StartConversation("", "Resources/Para3_image18.jpg", "", "Nam và Ling quyết định đi ra khu vực được đánh mốc đấy. Ra đến nơi, đó là khu vực vách núi dốc.");
+                StartConversation("", "Resources/Para3_image19.jpg", "", "Đột nhiên Ling bị đẩy lăn xuống vách núi.");
+                StartConversation("", "Resources/Para3_image20.jpg", "", "Ling cố gắng đứng dậy nghỉ ngơi và chui vào hốc núi nằm xuống.");
+                StartConversation("", "Resources/Para3_image21.jpg", "", "Lúc nằm xuống Ling bất ngờ phát hiện nằm bên cạnh mình là Nam. Nhưng không phải là Nam như lúc đầu, đó là xác của Nam. Ling giật mình chạy ra khỏi hang.");
+                StartConversation("", "Resources/Para3_image22.jpg", "", "Giật mình bất thình lình lần hai, trước cửa hang chí là kẻ lạ mặt. Hắn nhìn Ling, bắt đầu cởi mũ và khẩu trang, và lộ mặt; hắn là con gái !!!. Hắn kể lại mọi chuyện, và điều đó khiến Ling nhớ lại mọi chuyện trước khi xảy ra tai nạn:");
+                gameData++;
+                SaveData("GameData.txt",gameData);
+            }
+            else
+            {
+                //Đoạn này dù Hưng có giải được printf nhưng các manh mối ở trên không thu được nên không thể để Ling biết được tọa độ, sau đó sáng mn bị xiên all, Ling biến mất bí ẩn
+            }
+
+        }
+        else
+        {
+            //Đoạn này là bị xiên all rồi Ling biến mất bí ẩn, thêm ảnh và hội thoại
+        }
+    }
+    else
+    {
+        //Đoạn này là mở khóa không thành công, mọi người đi ngủ, sáng dậy mn đi về mang manh mối đi báo cảnh sát thì kẻ lạ mặt xuất hiện sau xe gây ra tai nạn
+    }
+
+
 }
 
 void PartOne()
@@ -375,6 +402,7 @@ void End2_2()
 
 void phase4()
 {
+    PlaySound(TEXT("Resources/UpdateSound/Doll Dance.wav"), NULL, SND_LOOP | SND_ASYNC);
     StartConversation("","Resources/Nam/1.jpg","","Vào ngày đẹp, gia đình Ling quyết định tổ chức đi chơi cùng với người yêu của Ling, chính là Nam");
     StartConversation("","Resources/Nam/2.jpg","","Những ngày đi chơi diễn ra suôn sẻ, vui vẻ của Ling tự nhiên như biến mất sau 1 đêm. Ling trở nên cáu gắt, khó ở, hay hạch sách Nam.");
     StartConversation("","Resources/Nam/3.jpg","","Nam cũng hiểu tình trạng bệnh của Ling, nên cố giữ bình tĩnh và động viên Ling, Nam biết Ling bây giờ không còn là Ling nữa. Nam cố gắng hòa đồng với Ling, nhằm có thể hòa đồng với Ling lúc này. ");
@@ -559,6 +587,35 @@ int CalculusQuiz()
         return 1;
     }
 }
+
+int PrintfQuiz()
+{
+    cleardevice();
+    readimagefile("Resources/chess/printfQuest.jpg",50,0,1230,400);
+    system("cls");
+    printf("\nHàm printf trả về gì: \n0. Không trả về gì cả\t1. Trả về số kí tự trong dấu ngoặc\t3. Trả về 1 nếu in ra thành công và 0 nếu thất bại\t4. Trả về về số ký tự được viết lên màn hình\n");
+    printf("Nhập câu trả lời: ");
+    int x=getch();
+    int attemp=2;
+    while(x!=(int)'4')
+    {
+        system("cls");
+        attemp--;
+        if(attemp<=0)
+        {
+            return 0;
+        }
+        printf("Hmm, hình như không phải, trả về gì nhỉ: \n0. Không trả về gì cả\t1. Trả về số kí tự trong dấu ngoặc\t3. Trả về 1 nếu in ra thành công và 0 nếu thất bại\t4. Trả về về số ký tự được viết lên màn hình");
+        printf("Nhập câu trả lời: ");
+        x=getch();
+        printf("%c",(char)x);
+        delay(500);
+    }
+
+    return 1;
+}
+
+
 
 
 
