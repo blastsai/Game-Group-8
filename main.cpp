@@ -40,9 +40,11 @@ int main()
         {
         case 1:
             gameData=LoadGame("GameData.txt");
+            ls=LoadDataArray("ls.txt",6);
             break;
         case 2:
             NewGame("GameData.txt");
+            SaveDataArray("ls.txt",ls,6);
             break;
         case 3:
             system("cls");
@@ -130,7 +132,7 @@ void Scanforminigame2(int a[])
 int Minigame2()
 {
     PlaySound(TEXT("Resources/UpdateSound/The Power In My Hands (feat Terence Kern).wav"), NULL, SND_LOOP | SND_ASYNC);
-    printf("Luật chơi: Hãy nhớ kĩ những số sắp xuất hiện sau đó bạn sẽ phải nhập lại đúng các số đó\nVà một điều quan trọng là bạn chỉ có 10 lần chơi, xin hãy cẩn thận!!!");
+    printf("Luật chơi: Hãy nhớ kĩ những số sắp xuất hiện sau đó bạn sẽ phải nhập lại đúng các số đó\nVà một điều quan trọng là bạn chỉ có 3 lần chơi, xin hãy cẩn thận!!!");
     printf("\n---Nhấn phím bất kỳ để bắt đầu chơi---");
     getch();
     int k=3;
@@ -280,11 +282,14 @@ void Day3()
     StartConversation("", "Resources/ImageofVan/Para3_image1.jpg", "", "Không như những hôm trước, đêm qua êm đềm mà không có gì lạ diễn ra. Mọi người cùng nhau chuẩn bị vào buổi sáng trong khi Nam và Hưng đi ngủ.");
     StartConversation("", "Resources/ImageofVan/Para3_image2.jpg", "", " Đến chiều, mọi người nhận được tin vui khi xe sắp hoàn thành việc sửa chữa và mọi người có thể an tâm rời khỏi đây trong chiều mai. Mọi người ai cũng vui sướng và mong chờ qua ngày hôm nay.");
     StartConversation("", "Resources/ImageofVan/Para3_image3.jpg", "", "Khi Ling đi vệ sinh xong, vừa bước ra ngoài thì đột nhiên đụng mặt kẻ lạ mặt đối mặt. Ling đứng sở ra nhìn hắn, hắn không định làm gì Ling, nhưng đe dọa Ling rằng “Nếu mày và nhóm mày tiếp tục đi xa hơn, thì mọi chuyện sẽ không còn đơn giản là bị phá hoại nữa đâu”, rồi hắn biến mất.");
-    StartConversation("", "Resources/ImageofVan/Para3_image4.jpg", "", " Ling quá sợ hãi rồi ngất đi. Khi tỉnh lại thì thấy mọi người đang chăm sóc Ling.");
-    StartConversation("", "Resources/ImageofVan/Para3_image5.jpg", "", "Sau khi nghe toàn bộ mọi chuyện, Nam nói rằng mình phải tìm được manh mối cuối cùng là x7 trước khi rời khỏi đây, vì hắn sẽ cố gắng thủ tiêu manh mối cuối cùng đó. Ling đồng ý và nói rằng rất có thể manh mối cuối cùng liên quan tới cái đèn nhấp nháy.");
+    StartConversation("", "Resources/ImageofVan/Para3_image4.jpg", "", "Ling quá sợ hãi rồi ngất đi. Khi tỉnh lại thì thấy mọi người đang chăm sóc Ling.");
+    if(ls[0]+ls[1]+ls[2]>=3)
+        StartConversation("", "Resources/ImageofVan/Para3_image5.jpg", "", "Sau khi nghe toàn bộ mọi chuyện, Nam nói rằng mình phải tìm được manh mối cuối cùng là x7 trước khi rời khỏi đây, vì hắn sẽ cố gắng thủ tiêu manh mối cuối cùng đó. Ling đồng ý và nói rằng rất có thể manh mối cuối cùng liên quan tới cái đèn nhấp nháy.");
+    else
+        StartConversation("", "Resources/ImageofVan/Para3_image5.jpg", "", "Sau khi nghe toàn bộ mọi chuyện, Nam nói rằng mình phải tìm được manh mối cuối cùng là x7 trước khi rời khỏi đây, vì hắn sẽ cố gắng thủ tiêu manh mối cuối cùng đó. Ling đồng ý và nói rằng rất có thể manh mối cuối cùng liên quan tới cái đèn nhấp nháy.");
     StartConversation("", "Resources/ImageofVan/Para3_image6.jpg", "", "Vừa dứt lời thì đèn phòng nhấp nháy thật và nhấp nháy rất lạ, có vẻ có quy luật riêng.");
-    StartQuestion("","Resources/ImageofVan/morse.jpg","","Đèn nhấp nháy như là biểu thị: -..- --... ; Mã trên có 1 nghĩa gì\n\t1. x7 2. x10 3. x11 4.x12 ",1);
-    StartConversation("","Resources/End/9.jpg","","Mọi người đến chỗ khu điều khiển điện để kiểm tra. Anh Minh và chị Ngân bất ngời khi các mạch điều khiển bị khóa bằng mật khẩu, để mở phải nhập đúng mật khẩu");
+    StartQuestion("","Resources/ImageofVan/morse.jpg","","Đèn nhấp nháy như là biểu thị: -..- --... ; Mã trên có 1 nghĩa gì\n\t1.x7 2.x10 3.x11 4.x12 ",1);
+    StartConversation("","Resources/End/9.jpg","","Mọi người đến chỗ khu điều khiển điện để kiểm tra. Anh Minh và chị Ngân bất ngờ khi các mạch điều khiển bị khóa bằng mật khẩu, để mở phải nhập đúng mật khẩu");
     ls[3]=CalculusQuiz();
     SaveDataArray("ls.txt",ls,6);
     if(ls[3])
@@ -293,7 +298,7 @@ void Day3()
         StartConversation("", "Resources/ImageofVan/Para3_image9.jpg", "", "Và thấy rằng bảng điện bị nối thêm 1 mạch Adruno, thậm chí nó có cả màn hình hiện lên các lệnh lập trình đấy.");
         StartConversation("", "Resources/ImageofVan/Para3_image10.jpg", "", "Hưng và Ling ghi bắt đầu nghiên cứu. Kéo đến cuối họ thấy comment của hàm “ for(int i=0;i<INT.MAX;i++) printf(“45”); “ được lặp lại nhiều lần, có vẻ như người viết muốn mọi người để ý đến số 45, nên rất có thể x7=”45”.");
         StartConversation("", "Resources/ImageofVan/Para3_image11.jpg", "", "Hưng nói rằng trong cặp Ling có sách “300 bài code thiếu nhi” và sẽ cố gắng nghiên với các manh mối từ anh chị kiểm lâm đưa với manh mối tìm được. Ling không hiểu sao trong cặp mình lại có cuốn sách đấy, nên chắc là do để quên.");
-        StartConversation("", "Resources/ImageofVan/Para3_image12.jpg", "", "Hưng và anh Hiền quyết định sẽ canh mọi người ngủ tối nay, anh Minh sẽ nghỉ ngơi để có thể đưa mọi người rời đi vào sáng mai, sau đó sẽ báo cảnh sát về những gì tìm được. ");
+        StartConversation("", "Resources/ImageofVan/Para3_image12.jpg", "", "Hưng quyết định sẽ canh mọi người ngủ tối nay, anh Minh sẽ nghỉ ngơi để có thể đưa mọi người rời đi vào sáng mai, sau đó sẽ báo cảnh sát về những gì tìm được. ");
         ls[4]=PrintfQuiz();
         SaveDataArray("ls.txt",ls,6);
         if(ls[4])
@@ -321,6 +326,7 @@ void Day3()
                 StartConversation("", "Resources/End/6.jpg", "", "Thì đột nhiên tên lạ mặt xuất hiện ở cuối xe");
                 StartConversation("", "Resources/End/7.jpg", "", "Hắn gây tai nạn khiến mọi người đều chết hết, riêng Ling bị thương nặng");
                 StartConversation("", "Resources/End/8.jpg", "", "Bad Ending");
+                gameData=0;
                 SaveData("GameData.txt",gameData);
                 exit(1);
             }
@@ -360,12 +366,12 @@ void PartOne()
     StartConversation("","Resources/image/image_2.jpg","","Sau 1 buổi đi chơi cùng với gia đình ở 1 vùng núi rừng");
     StartConversation("","Resources/image/image_3.jpg","","Gia đình Ling đã gặp nạn sau 1 vụ sạt lở. Tai nạn khiến bố mẹ Ling thiệt mạng, Ling bị hôn mê và 1 người không rõ danh tính đi với gia đình.");
     StartConversation("","Resources/image/image_4.jpg","","Sau khi tỉnh lại, Ling luôn cảm thấy có gì đó uẩn khúc trong vụ tai nạn này nên quyết định quay lại nơi xảy ra tai nạn để điều tra");
-    StartConversation("","Resources/image/image_5.jpg","",".Đi cùng Ling gồm bạn Nam, Hưng, và Hiền. Họ gọi cho đội kiểm lâm ở khu rừng và quyết định ở lại khu kiểm lâm 1 tuần để cùng Ling đi điều tra dưới danh nghĩa là sinh viên tình nguyện.");
+    StartConversation("","Resources/image/image_5.jpg","","Đi cùng Ling gồm bạn Nam, Hưng, và Hiền. Họ gọi cho đội kiểm lâm ở khu rừng và quyết định ở lại khu kiểm lâm 1 tuần để cùng Ling đi điều tra dưới danh nghĩa là sinh viên tình nguyện.");
     StartConversation("","Resources/image/image_6.jpg","","Đến khu kiểm lâm, nhóm được quản lý và ở tại 1 khu riêng. Người quản lý nhóm gồm chị Ngân và anh Minh");
-    StartConversation("","Resources/image/image_7.jpg","","Vào buổi đêm trong lúc nhóm nghỉ ngơi tâm sự, anh chị kể rằng, từ lúc gia đình Linh xảy ra tai nạn ở đây xuất hiện rất nhiều hiện tượng lạ như tiếng ai đó gào vào buổi đêm, tiếng leng keng xung quanh khu kiểm, đèn bị nhấp nháy bất thường. Mọi người nghe xong rợi hết cả tóc gáy và quyết định tối mai sẽ đi điều tra.");
-    StartConversation("","Resources/image/image_8.jpg","","Sau khi nhóm chấn tĩnh lại, chị Ngân nói rằng nạn nhân trước khi gặp nạn ở vụ sạt lở để lại 1 lời nhắn, chị đã kịp chụp trước khi đưa cho cảnh sát rồi để mọi người xem, hiện giờ không biết lời nhắn đó là của ai trong vụ tai nạn và nó có ý nghĩa gì. Lời nhắn đó là “ printf(“%s”, x1); printf(“%s”, x2); printf(“%s”, x3); printf(“%s”, x4); printf(“%s”, x5); printf(“%s”, x6); printf(“%s”, x7); printf(“%s”, x8); printf(“%s”, x9); printf(“%s”, x10); ”");
+    StartConversation("","Resources/image/image_7.jpg","","Vào buổi đêm trong lúc nhóm nghỉ ngơi tâm sự, anh chị kể rằng, từ lúc gia đình Linh xảy ra tai nạn ở đây xuất hiện rất nhiều hiện tượng lạ như tiếng ai đó gào vào\nbuổi đêm, tiếng leng keng xung quanh khu kiểm, đèn bị nhấp nháy bất thường. Mọi người nghe xong rợi hết cả tóc gáy và quyết định tối mai sẽ đi điều tra.");
+    StartConversation("","Resources/image/image_8.jpg","","Sau khi nhóm chấn tĩnh lại, chị Ngân nói rằng nạn nhân trước khi gặp nạn ở vụ sạt lở để lại 1 lời nhắn, chị đã kịp chụp trước khi đưa cho cảnh sát rồi để mọi người\nxem, hiện giờ không biết lời nhắn đó là của ai trong vụ tai nạn và nó có ý nghĩa gì. Lời nhắn đó là “ printf(“%s”, x1); printf(“%s”, x2); printf(“%s”, x3); printf(“%s”, x4);\nprintf(“%s”, x5); printf(“%s”, x6); printf(“%s”, x7); printf(“%s”, x8); printf(“%s”, x9); printf(“%s”, x10) ”");
     StartConversation("","Resources/image/image_9.jpg","","Sáng hôm sau khi mọi người tỉnh dậy, nhóm được các anh chị kiểm lâm nấu ăn sáng và không bắt dậy sớm vì thấy nhóm hôm qua đã mệt và bị anh chị dọa hơi quá");
-    StartConversation("","Resources/image/image_10.jpg","",". Sau khi nhóm chấn tĩnh lại, chị Ngân nói rằng nạn nhân trước khi gặp nạn ở vụ sạt lở để lại 1 lời nhắn, chị đã kịp chụp trước khi đưa cho cảnh sát rồi để mọi người xem, hiện giờ không biết lời nhắn đó là của ai trong vụ tai nạn và nó có ý nghĩa gì. Lời nhắn đó là“ printf(“%s”, x1); printf(“%s”, x2); printf(“%s”, x3); printf(“%s”, x4); printf(“%s”, x5); printf(“%s”, x6); printf(“%s”, x7); printf(“%s”, x8); printf(“%s”, x9); printf(“%s”, x10); ”  Có vẻ nạn nhân là người thích lập trình, mà cả gia đình đều theo khuynh hướng lập trình nên không biết ai thật.");
+    StartConversation("","Resources/image/image_10.jpg","","Sau khi nhóm chấn tĩnh lại, chị Ngân nói rằng nạn nhân trước khi gặp nạn ở vụ sạt lở để lại 1 lời nhắn, chị đã kịp chụp trước khi đưa cho cảnh sát rồi để mọi người xem, hiện giờ không biết lời nhắn đó là của ai trong vụ tai nạn và nó có ý nghĩa gì. Lời nhắn đó là“ printf(“%s”, x1); printf(“%s”, x2); printf(“%s”, x3); printf(“%s”, x4); printf(“%s”, x5); printf(“%s”, x6); printf(“%s”, x7); printf(“%s”, x8); printf(“%s”, x9); printf(“%s”, x10); ”  Có vẻ nạn nhân là người thích lập trình, mà cả gia đình đều theo khuynh hướng lập trình nên không biết ai thật.");
     StartConversation("","Resources/image/image_11.jpg","","Một trong những điều đó là những cái đinh xuất hiện bất thường ở khu rừng keo gần đây.");
     StartConversation("","Resources/image/image_12.jpg","","Đến buổi chiều được nghỉ ngơi, nhóm quay lại khu rừng keo và ghi lại chi tiết những bất thường ở đây. Ling lúc đến khu này luôn cảm thấy lạnh lạnh như bị ai đang theo dõi nên lúc nào cũng phải rúc vào đi gần ai đó.");
     StartConversation("","Resources/image/image_13.jpg","","Sau đó, nhóm cùng nhau về nơi nghỉ ngơi và phân tích. Sau 1 hồi phân tích, họ thấy các vị trí đóng đinh hao hao giống x9.");
@@ -429,6 +435,9 @@ void End1_1()
     StartConversation("","Resources/Ending/End1/4.jpg","","Trong lúc Y tá không để ý, Ling thoát ra và chạy trốn.");
     StartConversation("","Resources/Ending/End1/7.jpg","","Ling muốn đến một nơi mà không ai biết mình, một nơi mà Ling sẽ được sống một cách bình thường. Nhưng cuộc chạy trốn thất bại, Ling bị bắt về viện.");
     StartConversation("","Resources/Ending/End1/8.jpg","","Ling thấy rằng mình không thể sống ở xã hội này được, nên đã nhân lúc y tá không để ý lần nữa nên đã tự giải thoát chính mình ở tầng 26 của bệnh viện.");
+    gameData=0;
+    SaveData("GameData.txt",gameData);
+    exit(1);
 
 }
 void End1_2()
@@ -438,12 +447,18 @@ void End1_2()
     StartConversation("","Resources/Ending/End1/5.jpg","","Ling đến chỗ của Hiền, trước khi thanh toán Hiền, sắc mặt Ling không khác gì kẻ lạ mặt và giảng lại đạo lý cho chính Hiền.");
     StartConversation("","Resources/Ending/End1/6.jpg","","Sau đó đi thanh toán những người đã khiến Ling phải chịu khổ trong quá khứ một cách không thương tiếc.");
     StartConversation("","Resources/Ending/End1/8.jpg","","Biết hành động của mình sẽ không thể tha thứ, Ling nhảy lầu giải thoát mình khỏi xã hội này. Khác với những lần trước, lần nay Ling đã thực sự chết.");
+    gameData=0;
+    SaveData("GameData.txt",gameData);
+    exit(1);
 }
 
 void End2_1()
 {
     StartConversation("","Resources/Ending/End2/2.1.1.jpg","","Sau khi bác sĩ rời đi, Hiền ở lại động viên thấu hiểu Ling. Ling nhớ lại câu nói của Nam hãy tiếp tục sống, tiếp tục cố gắng dù có thế nào.");
     StartConversation("","Resources/Ending/End2/2.1.2.jpg","","Với sự giúp đỡ của Hiền, Ling dần bình thường lại và được xuất viện, hòa nhập với mọi người.");
+    gameData=0;
+    SaveData("GameData.txt",gameData);
+    exit(1);
 }
 void End2_2()
 {
@@ -451,6 +466,9 @@ void End2_2()
     StartConversation("","Resources/Ending/End2/2.2.1.jpg","","Sau khi điều trị thành công, Ling trở về nhà. Mặc dù cố gắng tiếp tục sống, nhưng cuộc sống quá khó khăn vì mọi người không ai chấp nhận quá khứ của Ling.");
     StartConversation("","Resources/Ending/End2/2.2.2.jpg","","Không còn gì cả, không bạn bè, tiền bạc, cuộc sống khó khăn áp lực vất vả.");
     StartConversation("","Resources/Ending/End2/2.2.3.jpg","","Ling tìm kiếm cái sự giải thoát cho mình bằng một sợi dây. ");
+    gameData=0;
+    SaveData("GameData.txt",gameData);
+    exit(1);
 }
 
 void phase4()
@@ -485,8 +503,8 @@ int ChessQuiz()
     cleardevice();
     readimagefile("Resources/chess/chess1.jpg",400,0,900,400);
     system("cls");
-    printf("\n\tĐi nước nào để có thể chiếu hết nhỉ\n\t 1.Hxf6+(Hậu trắng ăn mã đen) \t 2.Xc1(Xe trắng chồng quân với hậu) \t3.h3(Lên tốt ở góc đuổi hậu đi) \t4.Mbd2(chuyển mã ra giữa bàn cờ)\n");
-    printf("\tNhập nước bạn muốn đi: ");
+    printf("\n\tĐi 2 nước nào để có thể chiếu hết nhỉ\n\t 1.Hxf6+(Hậu trắng ăn mã đen) \t 2.Xc1(Xe trắng chồng quân với hậu) \t3.h3(Lên tốt ở góc đuổi hậu đi) \t4.Mbd2(chuyển mã ra giữa bàn cờ)\n");
+    printf("\tNhập nước đầu tiên bạn muốn đi: ");
     char ip=(char)getch();
     printf("%c",ip);
     delay(500);
@@ -553,7 +571,7 @@ int Minigame1()
         fscanf(fd,"%d",&a[i]);
     }
     f=fopen("Cauhoi.txt","r");
-    char s[12][40];
+    char s[12][50];
     StartConversation("Resources/nam.jpg","Resources/Trinh/day2minigame1-1.jpg","","Hãy vượt qua thử thách để đuổi lũ côn trùng đi!!!");
     int i;
     int n;
