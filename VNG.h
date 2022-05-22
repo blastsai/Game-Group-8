@@ -143,6 +143,14 @@ int StartSelection(char charactorImageLink[],char imageLink[],char charactorName
         while(i<strlen(conversation))
         {
             printf("%c",conversation[i++]);
+            if(kbhit())
+            {
+                getch();
+                system("cls");
+                printf("\t%s\n\t",charactorName);
+                printf("%s",conversation);
+                break;
+            }
             Sleep(30);
         }
         printf("\n\n\t---Nhập lựa chọn của bạn: ");
@@ -433,7 +441,7 @@ int randomAnswer(int s[])
     int j=0;
     while(i<5)
     {
-        check=random(0,12);
+        check=random(0,11);
         for(int j=0;j<dem;j++)
         {
             if(b[j]==check)

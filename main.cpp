@@ -248,7 +248,6 @@ void Day2()
         StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-8.jpg","","Lũ côn trùng quá hung hãn, mọi người chạy trốn về nhà.Sau đó, họ cùng nhau đi ngủ, riêng anh Minh sẽ thức đêm để canh mọi người.");
     }
     PlaySound(TEXT("Resources/UpdateSound/Guitar On The Water.wav"), NULL, SND_LOOP | SND_ASYNC);
-    StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-8.jpg","","Mọi người thấy rằng đây chỉ là những khí tự vô nghĩa. Bế tắc, họ cùng nhau đi ngủ, riêng anh Minh sẽ thức đêm để canh mọi người.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-9.jpg","","Mọi người lại được phen tá hỏa khi anh Minh bị đánh bất tỉnh, nhưng mọi người đều không bị sao.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-10.jpg","","Hưng không chịu được quyết định mang vũ khí ra ngoài, mọi người không cản được và bị cuốn theo Hưng, trừ Ling ở lại chăm sóc anh Minh.");
     StartConversation("Resources/Character/hung.jpg","Resources/Trinh/day2-11.jpg","","Trong lúc mọi người đang cố giữ bình tĩnh cho Hưng thì Ling từ trong nhà hét lên, khiến Hưng lao vút về nhà.");
@@ -569,7 +568,6 @@ int Minigame1()
     for(i=0; i<5; i++)
     {
         printf("Câu hỏi %d:%s\n",i+1,s[b[i]]);
-        printf("Câu trả lời:");
         n=input();
         if(n==a[b[i]])
         {
